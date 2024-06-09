@@ -1,0 +1,621 @@
+
+/* ----------------------------------------------Trang sản phẩm--------------------------------- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+}
+/* -------------Header------------------ */
+
+
+/* ---------------Menu-------------------- */
+
+
+#menu{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    /* border: 1px solid black; */
+}
+
+#menu-dmsp{
+    width: 300px;
+    height:100%;
+    margin-left: 10%;
+    background-color: rgb(96, 177, 38);
+    border-radius: 8px 8px 0px 0px;
+    color: white;
+    float: left;
+}
+
+#search{
+    width: 30%;
+    height: 100%;
+    float: left;
+    margin-left: 5%;
+    border-radius: 4px 0px 0px 4px;
+}
+
+#search-1{
+    width: 100%;
+    height: 100%;
+}
+
+ input[type="search"] /*chỉnh thuộc tính của thẻ input kiểu search */
+{
+    border: 1px solid rgb(96, 177, 38) ; /* là thuộc tính để chỉnh đường viền của input.*/
+    border-radius: 10px 0px 0px 10px;       /*  là thuộc tính để làm bo tròn góc của input.*/
+    font-size: 16px;                        /*  là thuộc tính để chỉnh kích thước phông chữ của input*/
+
+}
+
+#icon-search{
+    width: 5%;
+    height: 100%;
+    float: left;
+    background-color: rgb(96, 177, 38) ;
+}
+  
+#giohang{
+    width: 10%;
+    height: 100%;
+    float: right;
+    border: 2px solid rgb(96, 177, 38) ;
+    border-radius: 8px;
+    margin-right: 16%;
+
+}
+
+#giohang a {
+    color: rgb(96, 177, 38);
+    text-decoration: none;
+}
+
+#giohang i{
+    padding: 15px 10px;
+}
+.container{
+    max-width: 960px;
+    margin: 0px auto;
+}
+
+#main-menu{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#main-menu li{
+    position: relative;
+}
+#main-menu li a{
+    display: block;
+    text-decoration: none;
+    text-align: left;
+}
+
+#main-menu ul.sub-menu{
+    position: absolute;
+    background-color: white;
+    padding: 15px 0px;
+    list-style: none;
+    width: 300px;
+    border: 2px solid rgb(96, 177, 38);
+    display: none;
+    color: black;
+}
+
+#main-menu li:hover>ul.sub-menu{
+    display: block;
+}
+
+#main-menu ul.sub-menu a{
+    padding: 8px 15px;
+    border-bottom: 1px solid greenyellow;
+    left: 0;
+}
+
+
+#main-menu ul.sub-menu li:hover>a{
+    border-bottom: 1px solid red;
+    
+
+}
+#main-menu ul.sub-menu li:last-child a{
+    border: none;
+   
+}
+
+#main-menu ul.sub-menu ul.sub-menu{
+    left: 300px;
+    top:  -15px
+}
+
+.sub-menu i{
+    color: rgb(96, 177, 38);
+    padding: 0px 10px;
+}
+/* -----------------Tieu de--------------------- */
+.gioiThieu-tieude{
+    width: 100%;
+    height: 50px;
+    background: rgb(68, 70, 75);
+    margin-top: 10px;
+}
+
+.breadcrumbs{
+    width: 30%;
+    height: 100%;
+    margin-left: 150px;
+    padding: 10px 0px;
+    color: rgb(255,255,255);
+    font-size: 20px;
+}
+
+.breadcrumbs a{
+    color: rgb(255,255,255);
+    font-size: 20px;
+}
+/* --------------- */
+#content-sanPham{
+    width: 100%;
+    height: 500px;
+}
+
+/* --------------------container----------------------- */
+#container1{
+    width: 100%;
+    height: auto;
+}
+
+#container1 h1{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 26px;
+    line-height: 1.2;
+    color: #60b126;
+}
+
+#info-gioHang{
+    height: auto;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 20px;
+}
+
+#info-gioHang a{
+    text-decoration: none;
+    font-size: 20px;
+   
+    text-align: center;
+}
+
+.ttmuahang{
+    width: 30%;
+    background: #60b126;
+    color: white;
+    
+}
+
+.capnhat{
+    width: 30%;
+    background: #60b126;
+    margin-top: 20px;
+    
+}
+
+.ttmuahang:hover ,.capnhat:hover{
+    background-color: rgb(212, 24, 54);
+}
+
+/* -------------------- */
+.form-group{
+    width: 100%;
+    height: auto;
+    background-color: rgb(246, 247, 249);
+
+}
+.tbl-main{
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-collapse:collapse;
+    margin-bottom: 20px;
+    border: 2px solid rgb(96, 177, 38);
+
+}
+
+.tr1{
+    height: 30px;
+    font-size: 20px;
+    background: #60b126;
+    color: white;
+}
+.tbl1{
+    width: 20%;
+    
+}
+
+.tbl1 img{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.tbl2{
+    width: 20%;
+    text-align: center;
+    
+}
+
+.tbl2-info{
+    width: 100%;
+    height: 100%;
+}
+
+.tbl2-info{
+    padding: 20% 0px;
+}
+
+.tbl3{
+    width: 20%;
+    text-align: center;
+    
+}
+
+.tbl3-icon{
+    width: 20%;
+    height: 40px;
+    background-color: #E9ECEF;
+    float: left;
+   
+}
+
+.tbl3-soLuong{
+    width: 80%;
+    height: 40px;
+    background: rebeccapurple;
+    float: right;
+}
+
+.tbl4{
+    width: 10%;
+    
+    /* padding-left: 20px; */
+    
+}
+.tbl5{
+    width: 20%;
+    text-align: center;
+    
+}
+.tbl6{
+    width: 5%;
+}
+
+.tr2{
+    height: 5px;
+    background: #F6F7F9;
+}
+
+
+
+
+
+
+/* thông tin đơn hàng */
+.ttdh{
+    width: 100%;
+    height: 200px;
+    margin-right: 5%;
+    border: 2px solid rgb(96, 177, 38);
+    /* margin-left: 60px; */
+}
+
+.Information.line{
+    width: 100%;
+    height: 80%;
+}
+tbl3
+.Information.line span{
+    font-size: 20px;
+    color: rgb(230, 33, 23);
+    font-weight: normal;
+}
+
+.Information.line p{
+    font-size: 18px;
+    line-height: 2.5em;
+    font-weight: 500;
+
+}
+
+.info_prodcut{
+    width: 33%;
+    height: 23%;
+    display: inline-block;
+    float: left;
+}
+
+.info_splq{
+    width: 100%;
+    height: 50px;
+}
+.info_prodcut h2{
+    padding-top: 10px;
+    text-align: center;
+
+}
+.info_prodcut h3{
+    padding-top: 13px;
+    font-size: 18px; 
+    text-align: center;
+}
+
+.thanhToan{
+    width: 100%;
+    height: 20%;
+    background-color: rgb(96, 177, 38);
+}
+
+.thanhToan a{
+    font-size: 20px;
+    text-decoration: none;
+padding-left: 40%;
+    color: white;
+    text-align: center;
+}
+
+
+
+.thanhToan:hover{
+    background-color: rgb(212, 24, 54);
+}
+
+
+
+
+
+
+
+
+
+
+/* ---------------footer-------------------- */
+#footer{
+    width: 100%;
+    height: 450px;
+    background-color: white;
+    margin-top: 10px;
+}
+
+.footer-1{
+    width: 100%;
+    height: 15%;
+    background-color: rgb(229, 229, 229);
+}
+
+.tuvanmuahang{
+    width: 20%;
+    height: 100%;
+    margin-left: 10%;
+    float: left;
+}
+
+.tuvanbaohang{
+    width: 20%;
+    height: 100%;
+    margin-left: 10%;
+    float: left;
+}
+.lhequaemail{
+    width: 20%;
+    height: 100%;
+    margin-right: 10%;
+    float: right;
+}
+
+
+/* footer2 */
+.footer-2{
+    width: 100%;
+    height: 55%;
+    background-color: rgb(244, 244, 244)
+}
+
+.thongtin1{
+    width: 45%;
+    height: 100%;
+    float: left;
+    margin-left: 5%;
+}
+
+.footer-2 h2{
+    font-size: 14px;
+    padding: 20px;
+    list-style: none;
+    /* font-weight: bolder; */
+}
+
+.thongtin1 ul{
+    padding: 5px 0px;
+    margin-left: 5%;
+    list-style: none;
+}
+
+
+.thongtin1 span{
+    display: block;   
+    margin: 10px;
+    margin-left: 10%;
+    font-size: 16px;
+}
+
+.thongtin2{
+    width: 43%;
+    height: 100%;
+    float: right;
+    margin-right: 7%;
+}
+
+.chinhsachkh{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.chinhsachkh ul{
+    list-style: none;
+    list-style-type: square;
+    color: rgb(96, 177, 38);
+    padding: 0px 0px 0px 35px;
+    
+}
+
+.chinhsachkh li a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    margin: 10px;
+    display: block;
+}
+
+.ketnoifb{
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+.img-fb{
+    width: 80%;
+    height: 150px;
+    margin-left: 5%;
+    background-image: linear-gradient( to bottom, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, 0) 100% ) ,url(../img/Logo-DSHN.jpg);
+    background-size: 100% 100%; /* chiều rộng và chiều cao 50% của phần tử */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .9);
+}
+
+.img-chu{
+    width: 60%;
+    height: 60%;
+    float: right;
+    text-align: left;
+    margin-top: 10px;
+    overflow: hidden;           /* hiển thị vùng phần tử bị che giấu */
+    text-overflow: ellipsis;     /* giới hạn độ dài của nội dung trong một phần tử và hiển thị ký tự "..." ở cuối nếu nội dung vượt quá độ dài giới hạn. */
+    white-space: nowrap;         /* ngăn không cho chữ xuống dòng */
+    color: rgb(255,255,255);
+}
+.ketnoifb a{
+    color: white;
+}
+
+.theodoitrang{
+    width: 65%;
+    height: 20%;
+    background-color: white;
+    float: left; 
+    margin-top: 10px;
+    margin-left: 5%;
+    border-radius: 2px;
+    
+}
+/* footer3 */
+.footer-3{
+    width: 100%;
+    height: 15%;
+    background-color: white;
+}
+
+
+.info-giaycn{
+    width: 50%;
+    height: 100%;
+    float: left;
+    margin-left: 10%;
+}
+
+.info-giaycn h3{
+    
+    padding: 25px;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.img-bcthuong{
+    width: 30%;
+    height: 100%;
+    float: right;
+    margin-right: 10%;
+}
+/* footer4 */
+.footer-4{
+    width: 100%;
+    height: 15%;
+    background: linear-gradient(-90deg, #60b126 0%, #275a01 100%);
+    text-align: center;
+    padding-top: 15px;
+}
+
+.image{
+    position: fixed;
+    width: 5%;
+    height: 10%;
+    background: #28AB70;
+    border-radius: 100%;
+    top: 88%;
+    left: 10px;
+    transform: translate(15%);
+}
+
+.image img{
+    width: 65%;
+    height: 65%;
+    margin-left: 13px;
+    margin-top: 13px;
+    font-size: 30px ;
+    background: white;
+    border-radius:100%; 
+
+}
+
+.image{
+    position: fixed;
+    width: 5%;
+    height: 10%;
+    background: #28AB70;
+    border-radius: 100%;
+    top: 88%;
+    left: 10px;
+    transform: translate(15%);
+}
+
+.image img{
+    width: 65%;
+    height: 65%;
+    margin-left: 13px;
+    margin-top: 13px;
+    font-size: 30px ;
+    background: white;
+    border-radius:100%; 
+
+}
+
+.inp-tt{
+    width: 100%;
+    background-color: red;
+    display: inline-block;
+}
+
+.inp-tt input{
+    width: 94%;
+    height: 40px;
+    float: right;
+    background-color: rgb(96, 177, 38);
+    border: none;
+}

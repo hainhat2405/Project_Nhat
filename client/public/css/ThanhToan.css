@@ -1,0 +1,983 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -------------Header------------------ */
+
+
+/* ---------------Menu-------------------- */
+
+
+#menu{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    /* border: 1px solid black; */
+}
+
+#menu-dmsp{
+    width: 250px;
+    height:90%;
+    margin-left: 10%;
+    background-color: rgb(96, 177, 38);
+    border-radius: 8px 8px 0px 0px;
+    color: white;
+    float: left;
+}
+
+#search{
+    width: 30%;
+    height: 100%;
+    float: left;
+    margin-left: 5%;
+    border-radius: 4px 0px 0px 4px;
+}
+
+#search-1{
+    width: 100%;
+    height: 100%;
+}
+
+ input[type="search"] /*chỉnh thuộc tính của thẻ input kiểu search */
+{
+    border: 1px solid rgb(96, 177, 38) ; /* là thuộc tính để chỉnh đường viền của input.*/
+    border-radius: 10px 0px 0px 10px;       /*  là thuộc tính để làm bo tròn góc của input.*/
+    font-size: 16px;                        /*  là thuộc tính để chỉnh kích thước phông chữ của input*/
+
+}
+
+#icon-search{
+    width: 5%;
+    height: 100%;
+    float: left;
+    background-color: rgb(96, 177, 38) ;
+}
+  
+#giohang{
+    width: 10%;
+    height: 100%;
+    float: right;
+    border: 2px solid rgb(96, 177, 38) ;
+    border-radius: 8px;
+    margin-right: 16%;
+
+}
+
+#giohang a {
+    color: rgb(96, 177, 38);
+    text-decoration: none;
+}
+
+#giohang i{
+    padding: 15px 10px;
+}
+.container{
+    max-width: 960px;
+    margin: 0px auto;
+}
+
+#main-menu{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#main-menu li{
+    position: relative;
+}
+#main-menu li a{
+    display: block;
+    text-decoration: none;
+}
+
+#main-menu ul.sub-menu{
+    position: absolute;
+    background-color: white;
+    padding: 15px 0px;
+    list-style: none;
+    width: 250px;
+    border: 2px solid rgb(96, 177, 38);
+    display: none;
+    color: black;
+}
+
+#main-menu li:hover>ul.sub-menu{
+    display: block;
+}
+
+#main-menu ul.sub-menu a{
+    padding: 8px 15px;
+    border-bottom: 1px solid greenyellow;
+    left: 0;
+}
+
+
+#main-menu ul.sub-menu li:hover>a{
+    border-bottom: 1px solid red;
+    
+
+}
+#main-menu ul.sub-menu li:last-child a{
+    border: none;
+   
+}
+
+#main-menu ul.sub-menu ul.sub-menu{
+    left: 250px;
+    top:  -15px
+}
+
+
+/* ---------------Slide-------------------- */
+#slide{
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    margin-top: 10px;
+
+}
+
+.img-banhkeo{
+    width: 100%;
+    height: 100%;
+}
+
+.slide-2{
+    width: 100%;
+    height: 50px;
+}
+
+.slide-2 img{
+    float: left;
+}
+
+.giaohangst{
+    width: 20%;
+    height: 100%;
+    float: left;
+    margin-left: 10%;
+}
+
+.spbac {
+    width: 30%;
+    height: 100%;
+    float: left;
+    margin-left: 10%;
+}
+
+.dathangng{
+    width: 20%;
+    height: 100%;
+    float: right;
+    margin-right: 10%;
+}
+/* ---------------content-------------------- */
+#content{
+    width: 80%;
+    height: 2200px;
+    margin-left: 10%;
+    margin-top: 10px;
+    margin-top: 10px;
+
+}
+
+
+.content-1{
+    width: 100%;
+    height: 700px;
+
+}
+.content-2{
+    width: 100%;
+    height: 700px;
+    
+}
+.content-3{
+    width: 100%;
+    height: 700px;
+}
+
+.ten-sp{
+    width: 100%;
+    height: 100px;
+    margin-top: 30px;
+
+}
+
+.ten-sp1{
+    width: 30%;
+    height: 70%;
+    margin-left: 35%;
+    
+}
+
+.ten-sp1:after{
+    content: "";
+    position: absolute;  /* thiết lập vị trí của một phần tử dựa trên khối cha của nó. */
+    border-bottom: 2px solid #60b126;  /* thiết lập đường viền phía dưới của một phần tử */
+    left: 0;
+    right: 0;
+    width: 10%;
+    margin: 0 auto;
+}
+
+.ten-sp li{
+    float: left;
+    padding: 0px 10px;
+   list-style: none;
+}
+
+.ten-sp2 a{
+    text-decoration: none;
+    color: red;
+    border: 1px solid red;
+    padding: 5px;
+}
+
+.ten-sp2 i{
+    padding: 0px 5px;
+}
+
+
+.xemtc a
+{
+    text-decoration: none;
+    color: red;
+    border: 1px solid red;
+    padding: 5px;
+}
+
+.info-sp{
+    width: 100%;
+    height: 30%;
+    margin-top: 10px;
+    float: left;
+}
+
+.sp1{
+    width: 100%;
+    height: 200px;
+}
+.info-img1{
+    width: 20%;
+    height: 100%;
+    border: 1px solid rgb(248, 248, 248);
+    float: left;
+}
+
+.info-img1 img{
+    width: 100%;
+    height: 80%;
+    padding: 10px;
+}
+.info-img1 h4{
+    text-align: center;
+    font-size: 16px;
+}
+
+.info-danhgia{
+    width: 100%;
+    height: 50px;
+}
+
+.danhgia{
+    width: 20%;
+    height: 100%;
+    border: 1px solid rgb(248, 248, 248);
+    float: left;
+    text-align: center;
+    padding: 10px;
+}
+
+.danhgia span{
+    font-size: 14px;
+    color: rgb(255, 153, 0);
+}
+
+/*  */
+
+.giatien{
+    width: 100%;
+    height: 50px;
+}
+
+.giatien-sp{
+    width: 20%;
+    height: 100%;
+    border: 1px solid rgb(248, 248, 248);
+    float: left;
+    text-align: center;
+    padding: 10px;
+    color: red;
+}
+
+#content h2{
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: 400;
+    border-bottom: 2px solid gray;
+}
+/* -------tieu de-------------- */
+.gioiThieu-tieude{
+    width: 100%;
+    height: 50px;
+    background: rgb(0,0,0);
+    margin-top: 10px;
+}
+
+.breadcrumbs{
+    width: 30%;
+    height: 100%;
+    margin-left: 150px;
+    padding: 10px 0px;
+    color: rgb(255,255,255);
+    font-size: 20px;
+}
+
+.breadcrumbs a{
+    color: rgb(255,255,255);
+    font-size: 20px;
+    text-decoration: none;
+}
+/* ----------------container-----------------*/
+#container{
+    width: 100%;
+    height: 750px;
+}
+
+#container h1{
+    padding: 10px 150px;
+    color: #60B126;
+    font-size: 24px;
+}
+
+#ttkh{
+    width: 40%;
+    height: 90%;
+    margin-left: 10%;
+    margin-top: 10px;
+    float: left;
+}
+
+
+h3.h3 {
+    font-size: 15px;
+    font-weight: 100;
+    color: #e62117;
+    text-transform: uppercase;
+    background: #fff;
+    overflow: hidden;
+    
+}
+.h3, h3 {
+    font-size: 1.75rem;
+    
+}
+
+
+
+
+/* h3.h3:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-color: transparent transparent transparent #60b126;
+    position: absolute;
+    left: 192px;
+    top: 270px;
+} */
+
+/* h3.h3:before {
+    content: "\f083";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    background: #60b126;
+    display: inline-block;
+    margin-right: 10px;
+    color: #fff;
+    width: 20px;
+    height: 15px;
+    padding: 10px;
+} */
+/* --tt1 */
+.ttkh1{
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.namekh{
+    width: 45%;
+    height: 50px;
+    background: #FBFBFC;
+
+    float: left;
+}
+
+.namekh i{
+    width: 20%;
+    height: 100%;
+    padding: 15px 20px;
+    color: red;
+    background: #F6F7F9;
+    float: left;
+}
+
+.namekh input[type='text']{
+    width: 80%;
+    height: 100%;
+    float: right;
+    border: none;
+    background: #FBFBFC;
+}
+
+.sdtkh{
+    width: 45%;
+    height: 50px;
+    background: #FBFBFC;
+    float: right;
+}
+.sdtkh i{
+    width: 20%;
+    height: 100%;
+    padding: 15px 20px;
+    color: red;
+    background: #F6F7F9;
+    float: left;
+}
+
+.sdtkh input[type='text']{
+    width: 80%;
+    height: 100%;
+    float: right;
+    border: none;
+    background: #FBFBFC;
+}
+/* ---tt2 */
+.ttkh2{
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.emailkh{
+    width: 100%;
+    height: 50px;
+    background: #FBFBFC;
+    float: left;
+}
+.emailkh i{
+    width: 9%;
+    height: 100%;
+    padding: 15px 20px;
+    color: red;
+    background: #F6F7F9;
+    float: left;
+}
+
+.emailkh input[type='email']{
+    width: 91%;
+    height: 100%;
+    float: right;
+    border: none;
+    background: #FBFBFC;
+}
+/* --tt3--- */
+.ttkh3{
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+}
+.tinhkh{
+    width: 30%;
+    height: 50px;
+    float: left;
+}
+
+.huyenkh{
+    width: 30%;
+    height: 50px;
+    float: left;
+    margin-left: 5%;
+}
+
+.xakh{
+    width: 30%;
+    height: 50px;
+    float: right;
+}
+.ttkh3 i{
+    width: 30%;
+    height: 100%;
+    padding: 15px 20px;
+    color: red;
+    background: #F6F7F9;
+    float: left;
+    
+}
+
+.vn{
+    width: 70%;
+    height: 100%;
+    float: right;
+    border: none;
+    background: #FBFBFC;
+}
+
+/* ----ttkh4 */
+.ttkh4{
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.sonha{
+    width: 100%;
+    height: 50px;
+    background: #FBFBFC;
+    float: left;
+   
+
+}
+.sonha i{
+    width: 9%;
+    height: 100%;
+    padding: 15px 20px;
+    color: red;
+    background: #F6F7F9;
+    float: left;
+}
+
+.sonha input[type='text']{
+    width: 91%;
+    height: 100%;
+    float: right;
+    border: none;
+    background: #FBFBFC;
+}
+
+/* ----ttkh5 */
+.ttkh5{
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.note{
+    width: 100%;
+    float: left;
+   
+
+}
+.note i{
+    width: 9%;
+    height: 10%;
+    padding: 15px 20px;
+    color: red;
+    background: #F6F7F9;
+    float: left;
+}
+
+#txta{
+    width: 91%;
+    height: 100%;
+    border: none;
+}
+
+/* ----ttkh6 */
+.ttkh6{
+    width: 100%;
+    height: 50px;
+    margin-top: 40px;
+}
+
+.chkTt{
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.check{
+    width: 9%;
+    height: 100%;
+    padding: 15px 20px;
+    color: red;
+    background: #F6F7F9;
+    float: left;
+}
+.chkTt input[type='radio']{
+    width: 100%;
+    padding-bottom: 10px;
+
+}
+.chkTt input[type='text']{
+    width: 91%;
+    height: 100%;
+    float: right;
+    border: none;
+    background: #FBFBFC;
+}
+
+.ttmh{
+    width: 40%;
+    height: 50px;
+    margin-top: 80px;
+}
+
+.ttmuahang{
+    width: 100%;
+    background: #60b126;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+   
+}
+
+.dongy{
+    background: #60B126;
+    border: none;
+    width: 250px;
+    height: 50px;
+    font-weight: normal;
+}
+
+/* ----------------donhang------------------ */
+.donhang{
+    width: 30%;
+    height: 40%;
+    margin-right: 10%;
+    float: left;
+    margin-left: 60px;
+    color: white;
+}
+
+
+
+
+
+/* --------------------- */
+#infogioHang{
+    width: 45%;
+    height: 200px;
+    margin-left: 10%;
+    margin-top: 10px;
+    
+}
+
+
+#infogioHang{
+    position: fixed;
+    right: 0%;
+    top: 15%;
+    padding: 10px;
+
+}
+
+.tbl-main{
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    border-collapse:collapse;
+    margin-bottom: 20px;
+    background: rgb(246, 247, 249);
+}
+
+.tr1{
+    width: 10%;
+    height: 30px;
+    font-size: 20px;
+    background: #60b126;
+    color: white;
+}
+.tbl1{
+    width: 20%;
+}
+
+.tbl1 img{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.tbl2{
+    width: 20%;
+    
+}
+
+.tbl2-info{
+    width: 100%;
+    height: 100%;
+}
+
+.tbl2-info{
+    padding: 5% 0px;
+}
+
+
+.tbl3{
+    width: 10%;
+    
+    text-align: center;
+}
+
+.tr2{
+    width: 100%;
+    height: 100px;
+    background: #F6F7F9;
+}
+
+.tr3{
+    height: 50px;
+    background-color: rgb(229, 229, 229);
+}
+
+.tr3 span{
+    padding-left: 20px;
+    font-weight: 600;
+}
+
+.tbl6{
+    color: rgb(224, 12, 61);
+    text-align: center;
+    font-size: 20px;
+}
+/* ---------------footer-------------------- */
+#footer{
+    width: 100%;
+    height: 450px;
+    background-color: white;
+}
+
+.footer-1{
+    width: 100%;
+    height: 15%;
+    background-color: rgb(229, 229, 229);
+}
+
+.tuvanmuahang{
+    width: 20%;
+    height: 100%;
+    margin-left: 10%;
+    float: left;
+}
+
+.tuvanbaohang{
+    width: 20%;
+    height: 100%;
+    margin-left: 10%;
+    float: left;
+}
+.lhequaemail{
+    width: 20%;
+    height: 100%;
+    margin-right: 10%;
+    float: right;
+}
+
+
+
+
+/* footer2 */
+.footer-2{
+    width: 100%;
+    height: 55%;
+    background-color: rgb(244, 244, 244)
+}
+
+.thongtin1{
+    width: 45%;
+    height: 100%;
+    float: left;
+    margin-left: 5%;
+}
+
+.footer-2 h2{
+    font-size: 14px;
+    padding: 20px;
+    list-style: none;
+    /* font-weight: bolder; */
+}
+
+.thongtin1 ul{
+    padding: 5px 0px;
+    margin-left: 5%;
+    list-style: none;
+}
+
+
+.thongtin1 span{
+    display: block;   
+    margin: 10px;
+    margin-left: 10%;
+    font-size: 16px;
+}
+
+.thongtin2{
+    width: 43%;
+    height: 100%;
+    float: right;
+    margin-right: 7%;
+}
+
+.chinhsachkh{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.chinhsachkh ul{
+    list-style: none;
+    list-style-type: square;
+    color: rgb(96, 177, 38);
+    padding: 0px 0px 0px 35px;
+    
+}
+
+.chinhsachkh li a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    margin: 10px;
+    display: block;
+}
+
+.ketnoifb{
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+.img-fb{
+    width: 80%;
+    height: 150px;
+    margin-left: 5%;
+    background-image: linear-gradient( to bottom, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, 0) 100% ) ,url(../img/Logo-DSHN.jpg);
+    background-size: 100% 100%; /* chiều rộng và chiều cao 50% của phần tử */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .9);
+}
+
+.img-chu{
+    width: 60%;
+    height: 60%;
+    float: right;
+    text-align: left;
+    margin-top: 10px;
+    overflow: hidden;           /* hiển thị vùng phần tử bị che giấu */
+    text-overflow: ellipsis;     /* giới hạn độ dài của nội dung trong một phần tử và hiển thị ký tự "..." ở cuối nếu nội dung vượt quá độ dài giới hạn. */
+    white-space: nowrap;         /* ngăn không cho chữ xuống dòng */
+    color: rgb(255,255,255);
+}
+.ketnoifb a{
+    color: white;
+}
+
+.theodoitrang{
+    width: 65%;
+    height: 20%;
+    background-color: white;
+    float: left; 
+    margin-top: 10px;
+    margin-left: 5%;
+    border-radius: 2px;
+    
+}
+/* footer3 */
+.footer-3{
+    width: 100%;
+    height: 15%;
+    background-color: white;
+}
+
+
+.info-giaycn{
+    width: 50%;
+    height: 100%;
+    float: left;
+    margin-left: 10%;
+}
+
+.info-giaycn h3{
+    
+    padding: 25px;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.img-bcthuong{
+    width: 30%;
+    height: 100%;
+    float: right;
+    margin-right: 10%;
+}
+/* footer4 */
+.footer-4{
+    width: 100%;
+    height: 15%;
+    background: linear-gradient(-90deg, #60b126 0%, #275a01 100%);
+}
+
+.banquyen{
+    width: 40%;
+    height: 100%;
+    float: left;
+    margin-left: 10%;
+    color: white;
+    padding: 25px 0px 0px 0px;
+}
+
+.text-warning {
+    color: #ffc107!important;
+}
+.thietke{
+    width: 40%;
+    height: 100%;
+    float: right;
+    margin-right: 10%;
+    text-align: right;
+    color: white;
+    padding: 25px 0px 0px 0px;
+}
+.info-img1 img:hover{
+    transform: translateY(-10%);
+}
+
+#menu{
+    margin-top: 1px;
+    background-color: white;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.image{
+    position: fixed;
+    width: 5%;
+    height: 10%;
+    background: #28AB70;
+    border-radius: 100%;
+    top: 88%;
+    left: 10px;
+    transform: translate(15%);
+}
+
+.image img{
+    width: 65%;
+    height: 65%;
+    margin-left: 13px;
+    margin-top: 13px;
+    font-size: 30px ;
+    background: white;
+    border-radius:100%; 
+
+}

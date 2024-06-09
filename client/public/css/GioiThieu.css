@@ -1,0 +1,558 @@
+
+/* -------------------------Trang giới thiệu------------------------------- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -------------Header------------------ */
+
+
+/* ---------------Menu-------------------- */
+
+
+#menu{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    /* border: 1px solid black; */
+}
+
+#menu-dmsp{
+    width: 250px;
+    height:90%;
+    margin-left: 10%;
+    background-color: rgb(96, 177, 38);
+    border-radius: 8px 8px 0px 0px;
+    color: white;
+    float: left;
+}
+
+#search{
+    width: 30%;
+    height: 100%;
+    float: left;
+    margin-left: 5%;
+    border-radius: 4px 0px 0px 4px;
+}
+
+#search-1{
+    width: 100%;
+    height: 100%;
+}
+
+ input[type="search"] /*chỉnh thuộc tính của thẻ input kiểu search */
+{
+    border: 1px solid rgb(96, 177, 38) ; /* là thuộc tính để chỉnh đường viền của input.*/
+    border-radius: 10px 0px 0px 10px;       /*  là thuộc tính để làm bo tròn góc của input.*/
+    font-size: 16px;                        /*  là thuộc tính để chỉnh kích thước phông chữ của input*/
+
+}
+
+#icon-search{
+    width: 5%;
+    height: 100%;
+    float: left;
+    background-color: rgb(96, 177, 38) ;
+}
+  
+#giohang{
+    width: 10%;
+    height: 100%;
+    float: right;
+    border: 2px solid rgb(96, 177, 38) ;
+    border-radius: 8px;
+    margin-right: 16%;
+
+}
+
+#giohang a {
+    color: rgb(96, 177, 38);
+    text-decoration: none;
+}
+
+#giohang i{
+    padding: 15px 10px;
+}
+.container{
+    max-width: 960px;
+    margin: 0px auto;
+}
+
+#main-menu{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#main-menu li{
+    position: relative;
+}
+#main-menu li a{
+    display: block;
+    text-decoration: none;
+}
+
+#main-menu ul.sub-menu{
+    position: absolute;
+    background-color: white;
+    padding: 15px 0px;
+    list-style: none;
+    width: 250px;
+    border: 2px solid rgb(96, 177, 38);
+    display: none;
+    color: black;
+}
+
+#main-menu li:hover>ul.sub-menu{
+    display: block;
+}
+
+#main-menu ul.sub-menu a{
+    padding: 8px 15px;
+    border-bottom: 1px solid greenyellow;
+    left: 0;
+}
+
+
+#main-menu ul.sub-menu li:hover>a{
+    border-bottom: 1px solid red;
+    
+
+}
+#main-menu ul.sub-menu li:last-child a{
+    border: none;
+   
+}
+
+#main-menu ul.sub-menu ul.sub-menu{
+    left: 250px;
+    top:  -15px
+}
+
+/* -----------------Tieu de--------------------- */
+.gioiThieu-tieude{
+    width: 100%;
+    height: 50px;
+    background: rgb(68, 70, 75);
+    margin-top: 10px;
+}
+
+.breadcrumbs{
+    width: 30%;
+    height: 100%;
+    margin-left: 150px;
+    padding: 10px 0px;
+    color: rgb(255,255,255);
+    font-size: 20px;
+}
+
+.breadcrumbs a{
+    color: rgb(255,255,255);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* ------------------ */
+
+#gioiThieu{
+    width: 100%;
+    height: 1500px;
+    margin-top: 10px;
+    background-color: rgb(248, 249, 250);
+
+}
+
+.gioiThieu-tieude{
+    width: 100%;
+    height: 5%;
+    background-color: black;
+    
+}
+
+.gioiThieu-main{
+    width: 75%;
+    height: 95%;
+    float: left;
+    margin-left: 10%;
+    
+}
+
+.gioiThieu1{
+    width: 73%;
+    height: 100%;
+    float: left;
+    margin-right: 2%;
+    background-color: white;
+}
+.gioiThieu2{
+    width: 25%;
+    height: 100%;
+    float: right;
+}
+
+.gt{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(248, 249, 250);
+
+}
+
+.gt h1{
+    padding: 10px;
+    color: rgb(96, 177, 38);
+}
+
+.gioiThieu-nd h2 , p{
+    padding: 10px ;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.gioiThieu-DMSP{
+    width: 100%;
+    height: 50px;
+    margin: 10px 0px 0px 0px;
+}
+
+.gioiThieu-DMSP-nd{
+    width: 100%;
+    height: 48%;
+    background-color: rgb(244, 244, 244);
+}
+
+h3.h3 {
+    font-size: 15px;
+    position: relative; 
+    font-weight: 100;
+    color: #e62117;
+    text-transform: uppercase;
+    background: #fff;
+    overflow: hidden;
+}
+.h3, h3 {
+    font-size: 1.75rem;
+}
+
+h3.h3 span {
+    position: relative;
+}
+
+
+h3.h3:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-color: transparent transparent transparent #60b126;
+    position: absolute;
+    left: 35px;
+    top: 13px;
+}
+
+h3.h3:before {
+    content: "\f083";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    background: #60b126;
+    display: inline-block;
+    margin-right: 10px;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+
+.gioiThieu-DMSP-nd a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 20px;
+
+    
+}
+.gioiThieu-DMSP-nd li{
+    list-style: none;
+    padding: 10px 0px;    
+    
+}
+
+.gioiThieu-DMSP-nd .sub-menu1 li{
+    padding: 20px 0px;
+    margin-left: 20px;
+   
+}
+
+.sub-menu1 li {
+    border-bottom: 2px solid greenyellow;
+
+}
+
+/* ----------------bài viết mới------------------- */
+#gioithieu-BVM{
+    width: 100%;
+    height: 300px;
+    margin-top: 10px;
+    background-color: white;
+}
+
+.baiVietMoiP1{
+    width: 100%;
+    height: 100%;
+}
+
+.BVM1{
+    width: 100%;
+    height: 23%;
+
+}
+
+.BVM-img{
+    width: 30%;
+    height: 100%;
+    float: left;
+}
+
+.BVM-img img{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+.BVM-nd{
+    width: 70%;
+    height: 100%;
+    float: right;
+}
+
+.BVM-nd h3{
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.BVM2{
+    width: 100%;
+    height: 23%;
+    margin-top: 2%;
+}
+
+.BVM3{
+    width: 100%;
+    height: 23%;
+    margin-top: 2%;
+}
+
+.BVM4{
+    width: 100%;
+    height: 23%;
+    margin-top: 2%;
+}
+
+
+
+
+
+/* ---------------footer-------------------- */
+#footer{
+    width: 100%;
+    height: 450px;
+    background-color: white;
+}
+
+.footer-1{
+    width: 100%;
+    height: 15%;
+    background-color: rgb(229, 229, 229);
+}
+
+.tuvanmuahang{
+    width: 20%;
+    height: 100%;
+    margin-left: 10%;
+    float: left;
+}
+
+.tuvanbaohang{
+    width: 20%;
+    height: 100%;
+    margin-left: 10%;
+    float: left;
+}
+.lhequaemail{
+    width: 20%;
+    height: 100%;
+    margin-right: 10%;
+    float: right;
+}
+
+
+/* footer2 */
+.footer-2{
+    width: 100%;
+    height: 55%;
+    background-color: rgb(244, 244, 244)
+}
+
+.thongtin1{
+    width: 45%;
+    height: 100%;
+    float: left;
+    margin-left: 5%;
+}
+
+.footer-2 h2{
+    font-size: 14px;
+    padding: 20px;
+    list-style: none;
+    /* font-weight: bolder; */
+}
+
+.thongtin1 ul{
+    padding: 5px 0px;
+    margin-left: 5%;
+    list-style: none;
+}
+
+
+.thongtin1 span{
+    display: block;   
+    margin: 10px;
+    margin-left: 10%;
+    font-size: 16px;
+}
+
+.thongtin2{
+    width: 43%;
+    height: 100%;
+    float: right;
+    margin-right: 7%;
+}
+
+.chinhsachkh{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.chinhsachkh ul{
+    list-style: none;
+    list-style-type: square;
+    color: rgb(96, 177, 38);
+    padding: 0px 0px 0px 35px;
+    
+}
+
+.chinhsachkh li a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    margin: 10px;
+    display: block;
+}
+
+.ketnoifb{
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+.img-fb{
+    width: 80%;
+    height: 150px;
+    margin-left: 5%;
+    background-image: linear-gradient( to bottom, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, 0) 100% ) ,url(../img/Logo-DSHN.jpg);
+    background-size: 100% 100%; /* chiều rộng và chiều cao 50% của phần tử */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .9);
+}
+
+.img-chu{
+    width: 60%;
+    height: 60%;
+    float: right;
+    text-align: left;
+    margin-top: 10px;
+    overflow: hidden;           /* hiển thị vùng phần tử bị che giấu */
+    text-overflow: ellipsis;     /* giới hạn độ dài của nội dung trong một phần tử và hiển thị ký tự "..." ở cuối nếu nội dung vượt quá độ dài giới hạn. */
+    white-space: nowrap;         /* ngăn không cho chữ xuống dòng */
+    color: rgb(255,255,255);
+}
+.ketnoifb a{
+    color: white;
+}
+
+.theodoitrang{
+    width: 65%;
+    height: 20%;
+    background-color: white;
+    float: left; 
+    margin-top: 10px;
+    margin-left: 5%;
+    border-radius: 2px;
+    
+}
+/* footer3 */
+.footer-3{
+    width: 100%;
+    height: 15%;
+    background-color: white;
+}
+
+
+.info-giaycn{
+    width: 50%;
+    height: 100%;
+    float: left;
+    margin-left: 10%;
+}
+
+.info-giaycn h3{
+    
+    padding: 25px;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.img-bcthuong{
+    width: 30%;
+    height: 100%;
+    float: right;
+    margin-right: 10%;
+}
+/* footer4 */
+.footer-4{
+    width: 100%;
+    height: 15%;
+    background: linear-gradient(-90deg, #60b126 0%, #275a01 100%);
+}
+
+.banquyen{
+    width: 40%;
+    height: 100%;
+    float: left;
+    margin-left: 10%;
+    color: white;
+    padding: 25px 0px 0px 0px;
+}
+
+.text-warning {
+    color: #ffc107!important;
+}
+.thietke{
+    width: 40%;
+    height: 100%;
+    float: right;
+    margin-right: 10%;
+    text-align: right;
+    color: white;
+    padding: 25px 0px 0px 0px;
+}
