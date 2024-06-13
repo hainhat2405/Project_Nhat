@@ -1,12 +1,75 @@
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
+import { getAllProduct } from "../services/ProductService";
+import * as ProductService from '../services/ProductService';
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addOrderProduct } from '../redux/slides/orderSlide';
+import { converPrice } from "../utils";
 
-const productDetailComponents = () => {
+const ProductDetailComponents = ({ idProduct }) => {
+    const user = useSelector((state) => state.user)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const dispatch = useDispatch()
+    // const [numProduct, setNumProduct] = useState(0)
+    const [numProduct, setNumProduct] = useState(0);
+    // const onChange = (value) => {
+    //     // console.log('e.target.value',e.target.value)
+    //     console.log("nnnn",setNumProduct(value))
+    // }
+    const onChange = (value) => {
+        console.log("New value:", value); // Log the new value
+        setNumProduct(value); // Update the state
+    }
     const handlePopup = (url) => {
         window.open(url, 'popupwindow', 'scrollbars=yes,width=800,height=400').focus();
     };
     const showCart = () => {
         // Định nghĩa hàm showcart() tại đây
     };
+    const fetchGetDetailsProduct = async (context) => {
+        const res = await ProductService.getDetailsProduct(context);
+        return res;
+    };
+
+
+    const { data: productDetails } = useQuery({
+        queryKey: ['productDetails', idProduct], 
+        queryFn: () => fetchGetDetailsProduct(idProduct), 
+        enabled: !!idProduct, 
+    });
+
+
+
+    const handleAddOrderProduct = () => {
+        if (!user?.id) {
+            navigate('/login', { state: location?.pathname })
+        }
+        else {
+            dispatch(addOrderProduct({
+                orderItem: {
+                    name: productDetails?.data?.name,
+                    amount: numProduct,
+                    image: productDetails?.data?.image,
+                    price: productDetails?.data?.price,
+                    product: productDetails?.data?._id,
+                }
+            }))
+        }
+    }
+    console.log("productde", productDetails)
+    console.log("productDetails11111", productDetails, user)
+    // const {isLoading, data: productDetails} = useQuery({ queryKey: ['product-details'], fetchGetDetailsProduct, enable: !!idProduct})
+
+    // const fetchGetDetailsProduct = async (rowSelected) => {
+    // const res = await ProductService.getDetailsProduct(rowSelected)
+    //     return res
+    // }
+    // setIsPendingUpdate(false)
+
+
+
     return (
         <>
             <div class="gioiThieu-tieude">
@@ -17,10 +80,10 @@ const productDetailComponents = () => {
                         </span>
                         &raquo;
                         <span>
-                            <a href="DanhMuc.html">Product</a>
+                            <a href="DanhMuc.html">Chi tiết sản phẩm</a>
                         </span>
-                        &raquo;
-                        <span>Bánh Cốm Hà Nội</span>
+                        {/* &raquo;
+                        <span>Bánh Cốm Hà Nội</span> */}
                     </span>
                 </div>
             </div>
@@ -28,7 +91,7 @@ const productDetailComponents = () => {
                 <div class="thongTin" >
                     <div className="thongTin-1">
                         <div className="main">
-                            <img src="/img/images.jpg" alt="" className="img-feature" />
+                            <img src={`/img/${productDetails?.data?.image}`} alt="" className="img-feature" />
                             <div className="control prev"><i className="fa-solid fa-chevron-left" style={{ color: 'black', marginTop: '100px' }}></i></div>
                             <div className="control next"><i className="fa-solid fa-chevron-right" style={{ color: 'black', marginTop: '100px' }}></i></div>
                         </div>
@@ -42,20 +105,21 @@ const productDetailComponents = () => {
                     </div>
                     <div className="thongTin-2">
                         <form action="" method="post">
-                            <h1>tenSP</h1>
-                            <h3>gia</h3>
-                            <strong>loaiSP</strong>
+                            <h1 style={{ textAlign: 'left', fontSize: '30px' }}>{productDetails?.data?.name}</h1>
+                            <h3>{converPrice(productDetails?.data?.price)}</h3>
+                            <strong>{productDetails?.data?.type}</strong>
                             <div className="input-soLuong">
                                 <div className="soLuong">
                                     <span>Số Lượng</span>
                                 </div>
-                                <input type="number" name="soLuong" min="1" max="" defaultValue="1" style={{ width: '15%', height: '100%', padding: '0.375rem 0.75rem' }} />
+                                <input type="number" onChange={(event) => onChange(event.target.value)}
+                                    value={numProduct} name="soLuong" min="1" max="" defaultValue="1" style={{ width: '15%', height: '100%', padding: '0.375rem 0.75rem' }} />
                                 <input type="hidden" name="idSP_hidden" value="" style={{ width: '72%', height: '100%', padding: '0.375rem 0.75rem' }} />
                             </div>
-                            <button type="submit" className="btn2">Thêm vào giỏ</button>
+                            <a href="#" className="btn2" onClick={handleAddOrderProduct}>Thêm vào giỏ</a>
                         </form>
                         <div id="share">
-                            <span>SHARE:</span>
+                            <span onClick={handleAddOrderProduct}>SHARE:</span>
                             <a
                                 className="facebook"
                                 rel="nofollow"
@@ -128,11 +192,43 @@ const productDetailComponents = () => {
                                 <div className="BVM1">
                                     <div className="BVM-img">
                                         <a href="">
-                                            <img src="/img/images.jpg" alt="" />
+                                            <img src="/img/Image-ExtractWord-1-Out-3892-1705389983.png" alt="" />
                                         </a>
                                     </div>
                                     <div className="BVM-nd">
-                                        <h3>ten</h3>
+                                        <h3>Orion tăng sản xuất hộp quà đón Tết</h3>
+                                    </div>
+                                </div>
+                                <div className="BVM1">
+                                    <div className="BVM-img">
+                                        <a href="">
+                                            <img src="/img/ff8a789ba42973772a38-169883120-2989-9065-1698831286.jpg" alt="" />
+                                        </a>
+                                    </div>
+                                    <div className="BVM-nd">
+                                        <h3>Hãng bánh kẹo Hàn Quốc đẩy mạnh hoạt động tại Việt Nam</h3>
+                                    </div>
+                                </div>
+                                <div className="BVM1">
+                                    <div className="BVM-img">
+                                        <a href="">
+                                            <img src="/img/Image-452732624-ExtractWord-2-8127-6834-1696395971.png" alt="" />
+                                        </a>
+                                    </div>
+                                    <div className="BVM-nd">
+                                        <h3>
+                                            Bibica ra mắt phiên bản mới cho kẹo sữa Sumika</h3>
+                                    </div>
+                                </div>
+                                <div className="BVM1">
+                                    <div className="BVM-img">
+                                        <a href="">
+                                            <img src="/img/thumb1-1690338531-1690338558-1847-1690338731.jpg" alt="" />
+                                        </a>
+                                    </div>
+                                    <div className="BVM-nd">
+                                        <h3>
+                                            Bánh kẹo Tràng An trao hai giải du lịch châu Âu</h3>
                                     </div>
                                 </div>
                             </div>
@@ -147,21 +243,26 @@ const productDetailComponents = () => {
                             </h3>
                         </div>
                         <div className="info-ctsp">
-                            <div className="noidung">
-                                <h1>adjfhasdjkfjk</h1>
-                                <h1>adjfhasdjkfjk</h1>
-                                <h1>adjfhasdjkfjk</h1>
-                                <h1>adjfhasdjkfjk</h1>
-                                <h1>adjfhasdjkfjk</h1>
-                                <h1>adjfhasdjkfjk</h1>
-                                <h1>adjfhasdjkfjk</h1>
-                                <h1>adjfhasdjkfjk</h1>
-                            </div>
+                            <h2>Bánh Cốm</h2>
+                            <p><strong><em>Bánh cốm Hà Nội</em></strong> từ lâu đã trở thành một món đặc sản “dân dã” của người dân Hà Thành. Chiếc bánh được làm từ lúa nếp non, dẻo, bên trong là nhân đậu xanh. Tạo nên vị ngọt dịu, đậm đà với “tinh hoa của đất trời”. Vì thế, hãy cùng mình tìm hiểu về món bánh độc đáo này ngay dưới đây nhé.</p>
+                            <h2><strong>1. Giới thiệu về bánh cốm Hà Nội</strong></h2>
+                            <p><em>Ẩm thực Việt Nam luôn phong phú và đa dạng, tựa như mỗi tỉnh thành đều sẽ có một món ăn đặc trưng riêng, để khi nhắc đến người ta có thể dễ dàng nhớ đến địa danh đó. Cũng như khi nhắc đến Hà Nội, giữa vô vàn món ăn ngon, nhiều người vẫn nhớ đến cái tên<strong> bánh cốm</strong>. Vị bánh không quá ngọt nên rất được lòng nhiều người, bên cạnh đó còn có thể dùng cho lễ ăn hỏi. Nếu bạn đang quan tâm, hãy cùng </em><a href="https://dacsanthanhphuong.vn/"><em>Đặc Sản Thanh Phương</em></a><em> tìm hiểu chi tiết qua bài viết sau.</em></p>
+                            <p>Cửa hàng chuyên cung cấp bánh cốm thương hiệu Bảo Minh. Đây là một thương hiệu rất nổi tiếng được nhiều người trong nước và nước ngoài ưa chuộng.</p>
+                            <p>Phù hợp làm quà tặng cho người thân bạn bè hoặc những dịp cưới hỏi.</p>
+                            <p><strong>Bánh luôn có sẵn tại cửa hàng, luôn có date mới.</strong></p>
+                            <p><strong>Trọng lượng:</strong> 65 Gram có hộp.</p>
+                            <p><strong>Hạn sử dụng:</strong> 12 ngày.</p>
+                            <p><strong>Quy cách đóng gói:</strong> 1 hộp 1 cái bánh.</p>
+                            <p><strong>Kích thước hộp:</strong> 7x7cm</p>
+                            <h2><strong>2. Bánh cốm Hà Nội – thức quà “dân dã” tại Hà Thành</strong></h2>
+                            <p>Đã từ lâu, khi nhắc đến <strong>bánh cốm</strong> người ta sẽ nhớ đến Hà Nội, hoặc ngược lại khi nhớ đến Hà Nội sẽ nhớ đến <strong>bánh cốm</strong>. Nhiều người dân Hà Nội cho rằng bánh có tuổi đời rất lâu khoảng 200 năm, kể từ lúc cụ Trần Thị Luân nghĩ ra cách làm bánh.</p>
+                            <p>Ngày trước, ở phố Hàng Than, nơi xuất phát và nổi tiếng của bánh, chỉ có rất ít, lẻ tẻ vài ba nhà làm cốm. Nhưng đến hiện tại, đã có rất nhiều cửa hàng tại các con phố Hà Nội làm cốm. Trong đó nổi tiếng nhất là Bánh cốm Bảo Minh.</p>
+                            <p>Bánh có màu xanh non, mặt bánh trơn láng, mịn màng, không chỉ ngon mà </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="splq">
+            {/* <div className="splq">
                 <h3 className="h3">
                     <span>Sản Phẩm Liên Quan</span>
                 </h3>
@@ -169,7 +270,7 @@ const productDetailComponents = () => {
 
                     <div className="sP1">
                         <div className="sP-img">
-                            <img src="/img/images.jpg" alt="" />
+                            <img src="/img/" alt="" />
                             <span style={{ paddingTop: '10px' }}></span>
                         </div>
                         <div className="sP-danhGia">
@@ -183,9 +284,9 @@ const productDetailComponents = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 }
 
-export default productDetailComponents
+export default ProductDetailComponents

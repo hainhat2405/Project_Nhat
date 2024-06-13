@@ -44,3 +44,12 @@ export const updateUser = async (id, data, accessToken) => {
     })
     return res.data
 }    
+
+export const getAllUser = async() => {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/user/getAll`)
+    return res.data 
+} 
+export const createUser = async(data) => {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/product/createUser`,data)
+    return res.data 
+} 

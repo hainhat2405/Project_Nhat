@@ -1,11 +1,11 @@
-import { Divider, Radio, Table } from 'antd';
-import React, { useState } from 'react'
-import Loading from '../LoadingComponents/Loading';
-import { isPending } from '@reduxjs/toolkit';
+import { Table } from 'antd';
+import React from 'react'
+// import Loading from '../LoadingComponents/Loading';
+// import { isPending } from '@reduxjs/toolkit';
 
 const TableComponents = (props) => {
-    const { selectionType = "checkbox", setSelectionType, data = [], isLoading = false, columns= [] } = props;
-    // const [selectionType, setSelectionType] = useState('checkbox');
+    const { selectionType = "checkbox", data = [],  columns= [] } = props;
+    // const [selectionType, setSelectionType] = useState('checkbox');setSelectionType, isLoading = false,
 
     const rowSelection = {
         onChange: (selectedRowKeys, selectedRows) => {
@@ -26,6 +26,7 @@ const TableComponents = (props) => {
             }}
             columns={columns}
             dataSource={data}
+            {...props}
         />
         // </Loading>
     )

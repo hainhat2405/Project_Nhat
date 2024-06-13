@@ -1,6 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const MenuComponent = () => {
+    const navigate = useNavigate();
+    const handleDetailsProduct = (id) => {
+        navigate(`/order`)
+    }
     return (
         <div id="menu">
             <div id="menu-dmsp">
@@ -44,7 +49,7 @@ const MenuComponent = () => {
                 <i style={{ padding: '15px 25px', color: 'white' }} className="fa fa-search"></i>
             </div>
             <div id="giohang">
-                <a href="GioHang.html"><i className="fa fa-shopping-cart" style={{ fontSize: '14px' }}></i>Giỏ hàng</a>
+                <a href="#" onClick={handleDetailsProduct}><i className="fa fa-shopping-cart" style={{ fontSize: '14px' }}></i>Giỏ hàng</a>
             </div>
         </div>
     );

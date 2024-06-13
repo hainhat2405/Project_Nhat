@@ -42,7 +42,7 @@ const HeaderComponent = () => {
         </div>
     );
     
-    console.log("user?.isAdmin", !user.isAdmin)
+    console.log("user?.isAdmin", user?.isAdmin, user)
     return (
         <div id="header">
             <div className="logo-header">

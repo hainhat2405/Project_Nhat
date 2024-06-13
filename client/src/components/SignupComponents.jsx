@@ -90,6 +90,9 @@ const SignupComponents  = () => {
         <HeaderComponent/>
         <MenuComponent/>
         <div className="signup">
+        <div style={{marginRight: '100px', fontSize: '30px', marginBottom: '150px'}}>
+        <h1>Đăng ký</h1>
+        </div>
             <Form
             form={form}
             name="register"

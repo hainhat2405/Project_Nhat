@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { AppstoreOutlined, UserOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu, Switch } from 'antd';
-import AdminUser from '../../components/AdminUser/AdminUser';
+// import useSelection from 'antd/es/table/hooks/useSelection';
 import AdminProduct from '../../components/AdminProduct/AdminProduct';
+import AdminUser from '../../components/AdminUser/AdminUser';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const items = [
   {
@@ -82,8 +85,13 @@ const items = [
   },
 ];
 const AdminPage = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+      navigate(`/login`)
+  }
   const [openKeys, setOpenKeys] = useState("user")
   const [keySelected, setKeySelected] = useState("")
+  const user = useSelector((state) => state.user)
   const [theme, setTheme] = useState('dark');
   const [current, setCurrent] = useState('1');
   const changeTheme = (value) => {
@@ -117,8 +125,9 @@ const AdminPage = () => {
     <div>
       <div id="title1">
         <div className="feature">
-          <h3>ten</h3>
-          <a href="#">
+
+          <h3>{user?.name}</h3>
+          <a href="#"  onClick={handleLogout}>
             <i className="fa fa-power-off" style={{ fontSize: '20px', color: 'rgb(48, 130, 198)' }}></i>Đăng xuất
           </a>
         </div>
@@ -142,8 +151,9 @@ const AdminPage = () => {
             theme={theme}
             onClick={onClick}
             style={{
-              width: 256,
-            }}
+            width: 256,
+            height: 1000
+          }}
             defaultOpenKeys={['sub1']}
             selectedKeys={[current]}
             mode="inline"

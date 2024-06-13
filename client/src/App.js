@@ -13,7 +13,7 @@ import FooterComponent from './components/FooterComponent';
 import { jsJsonString } from './utils';
 import * as UserService from './services/UserService';
 import { jwtDecode } from 'jwt-decode';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from './redux/slides/useSlide';
 import useSelection from 'antd/es/table/hooks/useSelection';
 import Loading from './components/LoadingComponents/Loading';
@@ -22,16 +22,16 @@ import { isPending } from '@reduxjs/toolkit';
 
 
 function App() {
-  const user = useSelection((state) => state.user)
-  const [isLoading, setIsLoading] = useState(true)
+  const user = useSelector((state) => state.user)
+  // const [isLoading, setIsLoading] = useState(true)
   const dispatch = useDispatch();
   useEffect(() => {
-    setIsLoading(true)
+    // setIsLoading(true)
     const { storageData, decoded } = handleDecoded()
     if (decoded?.id) {
       handleGetDetailsUser(decoded?.id, storageData)
     }
-    setIsLoading(false)
+    // setIsLoading(false)
   });
 
 
@@ -62,6 +62,30 @@ function App() {
     const res = await UserService.getDetailsUser(id, token)
     dispatch(updateUser({ ...res?.data, accessToken: token }))
   }
+
+  // Lấy token từ Local Storage
+const token = localStorage.getItem('accessToken');
+
+// Giải mã token để lấy thông tin người dùng
+let decodedToken = null;
+if (token) {
+    decodedToken = jwtDecode(token);
+    console.log('token', token)
+}
+// Kiểm tra xem có token được lưu và giải mã thành công không
+if (decodedToken) {
+  // Kiểm tra xem thông tin người dùng có chứa dấu hiệu của một admin hay không
+  const isAdmin = decodedToken.isAdmin; // Sử dụng trường dữ liệu thích hợp trong token của bạn
+
+  if (isAdmin) {
+      console.log('Người dùng là admin');
+  } else {
+      console.log('Người dùng không phải là admin');
+  }
+} else {
+  console.log('Không có token hoặc token không hợp lệ');
+}
+
   // console.log('process.env.REACT_APP_API_KEY',process.env.REACT_APP_API_URL)
   // const fetchApi = async () =>{
   //   const res = await axios.get(`${process.env.REACT_APP_API_URL}/product/get-all`)
@@ -94,24 +118,24 @@ function App() {
     //   </Router>
     //   <FooterComponent />
     // </div>
-    // <Loading isPending={isPending}>
-      <div>
-        <Routes>
-          {routes.map((route) => {
+    <div>
+    <Routes>
+        {routes.map((route) => {
             const Page = route.page;
-            const isCheckAuth = !route.isPrivate || user.isAdmin;
-            const Layout = route.isShowHeader ? DefaultComponent : Fragment;
-            return (
-              <Route key={route.path} path={isCheckAuth && route.path} element={
-                <Layout>
-                  <Page />
-                </Layout>
-              } />
-            );
-          })}
-        </Routes>
-      </div>
-    // </Loading>
+            const isAuthorized = !route.isPrivate || user.isAdmin;
+                const Layout = route.isShowHeader ? DefaultComponent : Fragment;
+                return (
+                    <Route key={route.path} path={isAuthorized ? route.path: '*'} element={
+                        <Layout>
+                            <Page />
+                        </Layout>
+                    } />
+                );
+            }
+        )}
+    </Routes>
+</div>
+
   );
 }
 

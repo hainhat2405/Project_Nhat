@@ -4,7 +4,7 @@ import { InputEmail, InputPassword } from './InputForm';
 import * as UserService from '../services/UserService';
 import Loading from './LoadingComponents/Loading';
 import { useMutationHooks } from '../hooks/useMutationHook';
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import * as message from './Message/Message'
 import { jwtDecode } from "jwt-decode";
 import { useDispatch } from 'react-redux'
@@ -16,6 +16,7 @@ import FooterComponent from './FooterComponent';
 const LoginComponents = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation()
   const mutation = useMutationHooks(
     data => UserService.loginUser(data)
   )
@@ -27,11 +28,19 @@ const LoginComponents = () => {
 
 
   useEffect(() => {
+    console.log("location",location?.state)
     if (isSuccess) {
       if (data.status === 'OK') {
-        message.success()
-        navigate('/')
+        if(location?.state) {
+          navigate(location?.state)
+          message.success()
+        }
+        else{
+          navigate('/')
+          message.success()
+        }
         localStorage.setItem('accessToken', JSON.stringify(data?.accessToken));
+
         if (data?.accessToken) {
           const decoded = jwtDecode(data?.accessToken)
           if (decoded?.id) {
@@ -78,7 +87,11 @@ const LoginComponents = () => {
     <>
       <HeaderComponent />
       <MenuComponent />
+      
       <div className="login">
+        <div style={{marginRight: '100px', fontSize: '30px'}}>
+        <h1>Đăng nhập</h1>
+        </div>
         <Form
           name="normal_login"
           className="login-form"

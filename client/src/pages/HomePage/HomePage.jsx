@@ -13,7 +13,6 @@ function HomePage() {
     const onShowSizeChange = () => { }
     const fetchProductAll = async () => {
         const res = await ProductService.getAllProduct()
-        console.log("res", res)
         return res
     }
     const { isPending, data: products } = useQuery({ queryKey: ['products'], queryFn: fetchProductAll, retry: 3, retryDelay: 1000 })
@@ -26,7 +25,7 @@ function HomePage() {
             <div id="content">
                 <div className="product">
                     <div className="category_name">
-                        <h1>tenLoaiSP</h1>
+                        <h1>Bánh kẹo</h1>
                     </div>
                     <div className="view_cat">
                         <a href="">
@@ -45,7 +44,9 @@ function HomePage() {
                                 rating={products.rating}
                                 type={products.type} 
                                 selled={products.selled}
-                                discount={products.discount}/>
+                                discount={products.discount}
+                                id={products._id}
+                                />
                         )
                     })}
                     <div className="phanTrang">

@@ -99,7 +99,7 @@
     color: black;
     font-size: 16px;
     position: absolute;
-    top: 150px; /* Điều chỉnh vị trí theo yêu cầu */
+    top: 50px; /* Điều chỉnh vị trí theo yêu cầu */
     left: 150;
     z-index: 10;
 }

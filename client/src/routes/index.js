@@ -1,5 +1,5 @@
 import TypeComponent from "../components/TypeComponents";
-import productDetailComponents from "../components/productDetailComponents";
+// import productDetailComponents from "../components/productDetailComponents";
 import HomePage from "../pages/HomePage/HomePage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import OrderPage from "../pages/OrderPage/OrderPage";
@@ -8,6 +8,7 @@ import LoginComponents from "../components/LoginComponents";
 import SignupComponents from "../components/SignupComponents";
 import ProfilePage from "../pages/Profile/ProfilePage";
 import AdminPage from "../pages/AdminPage/AdminPage";
+import ProductDetailsPage from "../pages/ProductDetailsPage/ProductDetailsPage";
 
 export const routes = [
     {
@@ -41,8 +42,8 @@ export const routes = [
         isShowHeader: true,
     },
     {
-        path: '/product-details',
-        page: productDetailComponents,
+        path: '/:id',
+        page: ProductDetailsPage,
         isShowHeader: true,
     },
     {
@@ -54,7 +55,7 @@ export const routes = [
         path: '/admin',
         page: AdminPage,
         isShowHeader: false,
-        // isPrivate: true
+        isPrivate: true
     },
     {
         path: '*',
