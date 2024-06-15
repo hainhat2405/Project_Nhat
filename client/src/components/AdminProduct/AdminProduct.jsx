@@ -108,20 +108,29 @@ const AdminProduct = () => {
       return res
     }
   )
+  // const mutationUpdate = useMutationHooks(
+  //   (data) => {
+      
+  //     const {
+  //       id,
+  //       token,
+  //       ...rests} = data
+  //     const res = ProductService.updateProduct(
+  //         id,
+  //         {...rests},
+  //         token
+  //     )
+  //     return res
+  //   }
+    
+  // )
   const mutationUpdate = useMutationHooks(
     (data) => {
-      const {
-        id,
-        token,
-        ...rests} = data
-      const res = ProductService.updateProduct(
-          id,
-          token,
-          {...rests}
-      )
-      return res
+      const { id, token, ...rests } = data;
+      const res = ProductService.updateProduct(id, token, rests);
+      return res;
     }
-  )
+  );
   const mutationDelete = useMutationHooks(
     (data) => {
       const {
@@ -134,15 +143,33 @@ const AdminProduct = () => {
       return res
     }
   )
+  const mutationDeleteMany = useMutationHooks(
+    (data) => {
+      const {
+        token,
+        ...ids} = data
+      const res = ProductService.deleteManyProduct(
+          ids,
+          token
+      )
+      return res
+    }
+  )
+
+  console.log('mutationDeleteMany',mutationDeleteMany)
   const getAllProduct = async () => {
     const res = await ProductService.getAllProduct()
     return res
   }
+
   const { data, isPending, isSuccess, isError } = mutation
-  const { data: dataUpdated, isSuccess: isSuccessUpdated, isError: isErrorUpdated } = mutationUpdate
+  // const { data: dataUpdated1, isPending: isLoadingUpdate, isSuccess: isSuccessUpdated, isError: isErrorUpdated } = mutationUpdate
+  const { data: dataUpdated1, isLoading: isLoadingUpdate, isSuccess: isSuccessUpdated, isError: isErrorUpdated } = mutationUpdate;
   const { data: dataDeleted, isPending: isLoadingDelete, isSuccess: isSuccessDelete, isError: isErrorDelete } = mutationDelete
-  console.log('dataaa', dataUpdated)
-  const { isLoading: isLoadingProduct, data: products } = useQuery({ queryKey: ['products'], queryFn: getAllProduct })
+  const { data: dataDeletedMany, isPending: isLoadingDeleteMany, isSuccess: isSuccessDeleteMany, isError: isErrorDeleteMany } = mutationDeleteMany
+  console.log('dataaa', dataUpdated1)
+  const queryProduct = useQuery({ queryKey: ['products'], queryFn: getAllProduct })
+  const  { isLoading: isLoadingProduct, data: products } = queryProduct
   console.log('product', products)
 
   const [form] = Form.useForm();
@@ -181,15 +208,23 @@ const AdminProduct = () => {
     setIsOpenDrawer(true)
   }
   const handleCancelDelete = () => {
-    setIsOpenDrawer(false)
+    setIsModalOpenDelete(false)
   }
   const handleDeleteProduct = () => {
     mutationDelete.mutate({id: rowSelected, token: user?.accessToken},{
       onSettled: () =>{
-        products.refetch()
+        queryProduct.refetch()
       }
     })
     // setIsOpenDrawer(false)
+  }
+  
+  const handleDeleteManyProducts = (ids) => {
+    mutationDeleteMany.mutate({ids: ids, token: user?.accessToken},{
+      onSettled: () =>{
+        queryProduct.refetch()
+      }
+    })
   }
   console.log('user123', user)
   const renderAction = () => {
@@ -329,25 +364,26 @@ const AdminProduct = () => {
       sorter: (a, b) => a.rating - b.rating,
       filters: [
         {
-          text: '>=3',
+          text: '>= 3',
           value: '>=',
         },
         {
-          text: '<=3',
+          text: '<= 3',
           value: '<=',
         },
       ],
       onFilter: (value, record) => {
-        console.log('fff',{value, record})
         if(value === '>='){
-          return Number(record.price) >=3
+          return record.rating >= 3
         }
-        return Number(record.price) <=3
+        return record.rating <= 3
       }
     },
     {
       title: 'Type',
       dataIndex: 'type',
+      sorter: (a, b) => a.type.length - b.type.length,
+      ...getColumnSearchProps('type')
     },
     {
       title: 'Action',
@@ -370,6 +406,14 @@ const AdminProduct = () => {
       message.error();
     }
   }, [isSuccess])
+  useEffect(() => {
+    if (isSuccessDeleteMany && dataDeletedMany?.status === 'OK') {
+      message.success()
+    }
+    else if (isErrorDeleteMany) {
+      message.error();
+    }
+  }, [isSuccessDeleteMany])
 
   useEffect(() => {
     if (isSuccessDelete && dataDeleted?.status === 'OK') {
@@ -457,9 +501,23 @@ const AdminProduct = () => {
   };
 
 
+  // const onUpdateProduct = () => {
+  //   mutationUpdate.mutate({id: rowSelected, token: user?.accessToken, ...stateProductDetails},{
+  //     onSettled: () => {
+  //       queryProduct.refetch()
+  //     }
+  //   })
+  // }
   const onUpdateProduct = () => {
-    mutationUpdate.mutate({id: rowSelected, token: user?.accessToken, stateProductDetails})
-  }
+    mutationUpdate.mutate(
+      { id: rowSelected, token: user?.accessToken, ...stateProductDetails },
+      {
+        onSettled: () => {
+          queryProduct.refetch();
+        },
+      }
+    );
+  };
 
   return (
     <div className='user_info'>
@@ -576,7 +634,7 @@ const AdminProduct = () => {
         </Modal>
       </>
       <div style={{ marginTop: "20px" }}>
-        <TableComponents columns={columns} data={dataTable} isLoading={isLoadingProduct} onRow={(record, rowIndex) => {
+        <TableComponents handleDeleteMany={handleDeleteManyProducts} columns={columns} data={dataTable} isLoading={isLoadingProduct} onRow={(record, rowIndex) => {
           return {
             onClick: (event) => {
               setRowSelected(record._id)
@@ -585,6 +643,7 @@ const AdminProduct = () => {
         }} />
       </div>
       {/* onClose={(setIsOpenDrawer(false)) */}
+      <isLoading isPending="isLoadingUpdate">
       <DrawerComponents title='Chi tiết sản phẩm' isOpen={isOpenDrawer} onClose={handleCloseDrawer} width="50%">
 
           <Form
@@ -688,7 +747,7 @@ const AdminProduct = () => {
             </Form.Item>
           </Form>
       </DrawerComponents>
-
+      </isLoading>
       <Modal title="Xóa sản phẩm" className='modal-product' open={isModalOpenDelete} onCancel={handleCancelDelete} onOk={handleDeleteProduct}
         >
           

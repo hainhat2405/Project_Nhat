@@ -36,20 +36,38 @@ export const logoutUser = async () => {
     return res.data
 }
 
-export const updateUser = async (id, data, accessToken) => {
-    const res = await axiosJWT.put(`${process.env.REACT_APP_API_URL}/user/update-user/${id}`, data, {
+export const updateUser = async (id, accessToken, data) => {
+    const res = await axios.put(`${process.env.REACT_APP_API_URL}/user/update-user/${id}`, data, {
         headers: {
             token: `Bearer ${accessToken}`,
         }
-    })
-    return res.data
-}    
+    });
+    return res.data;
+}; 
 
 export const getAllUser = async() => {
     const res = await axios.get(`${process.env.REACT_APP_API_URL}/user/getAll`)
     return res.data 
 } 
 export const createUser = async(data) => {
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}/product/createUser`,data)
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/createUser`,data)
+    return res.data 
+} 
+
+export const deleteUser = async(id, accessToken) => {
+    const res = await axiosJWT.delete(`${process.env.REACT_APP_API_URL}/user/delete-user/${id}`, {
+        headers: {
+            token: `Bearer ${accessToken}`,
+        }
+    })
+    return res.data 
+} 
+
+export const deleteManyUser = async(data, accessToken) => {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/delete-many`, data, {
+        headers: {
+            token: `Bearer ${accessToken}`,
+        }
+    })
     return res.data 
 } 

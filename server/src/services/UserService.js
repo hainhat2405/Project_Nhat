@@ -4,7 +4,7 @@ const { generateAccessToken, generateRefreshToken } = require('./JwtService');
 
 const createUser = (newUser) => {
     return new Promise(async (resolve, reject) => {
-        const { name, email, password, phone } = newUser;
+        const { name, email, password, phone, address, avatar } = newUser;
         try {
             const checkUser = await User.findOne({ email:email });
             if (checkUser !== null) {
@@ -19,7 +19,7 @@ const createUser = (newUser) => {
                 name,
                 email,
                 password: hash,
-                phone,
+                phone, address, avatar
             });
 
             // const accessToken = await generateAccessToken({ id: createdUser._id, isAdmin: createdUser.isAdmin });
@@ -147,6 +147,41 @@ const deleteUser = (id) => {
     });
 };
 
+const deleteManyUser = (ids) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await User.deleteMany({_id: ids});
+
+            return resolve({
+                status: 'OK',
+                message: "Delete many user successfully",
+            });
+        } catch (e) {
+            reject({
+                status: 'ERR',
+                message: e.message,
+            });
+        }
+    });
+};
+const deleteManyProduct = (ids) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await Product.deleteMany({_id: ids});
+            
+            return resolve({
+                status: 'OK',
+                message: "Delete product successfully",
+            });
+        } catch (e) {
+            reject({
+                status: 'ERR',
+                message: e.message,
+            });
+        }
+    });
+};
+
 const getAllUser = () => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -197,5 +232,6 @@ module.exports = {
     updateUser,
     deleteUser,
     getAllUser,
-    getDetailsUser
+    getDetailsUser,
+    deleteManyUser
 };

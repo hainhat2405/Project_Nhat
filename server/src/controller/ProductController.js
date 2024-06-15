@@ -94,6 +94,25 @@ const deleteProduct = async (req, res) => {
     }
 };
 
+const deleteManyProduct = async (req, res) => {
+    try {
+        const ids = req.body.ids
+        if(!ids){
+            return res.status(200).json({
+                status: 'ERR',
+                message: 'The ids is required'
+            });
+        }
+        const result = await ProductService.deleteManyProduct(ids);
+        return res.status(200).json(result);
+    } catch (e) {
+        return res.status(404).json({
+            status: 'ERR',
+            message: e.message
+        });
+    }
+};
+
 
 
 module.exports = {
@@ -101,5 +120,6 @@ module.exports = {
     updateProduct,
     getDetailProduct,
     deleteProduct,
-    getAllProduct
+    getAllProduct,
+    deleteManyProduct
 };
