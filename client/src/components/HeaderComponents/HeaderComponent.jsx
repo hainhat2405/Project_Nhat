@@ -11,6 +11,7 @@ const HeaderComponent = () => {
     const user = useSelector((state) => state.user)
     const [userName, setUserName] = useState("")
     const [userAvatar, setUserAvatar] = useState("")
+    const [isOpenPopup, setIsOpenPopup] = useState(false)
     const navigate = useNavigate();
     const handleNavigateSignUp = () => {
         navigate('/login');
@@ -34,15 +35,30 @@ const HeaderComponent = () => {
     }
     const content = (
         <div>
-            <p className="infoUser" onClick={() => navigate('/profile-user')}>Thông tin người dùng</p>
+            <p className="infoUser" onClick={() => handleClickNavigate('profile')}>Thông tin người dùng</p>
+            <p className="infoUser" onClick={() => handleClickNavigate('my-order')}>Đơn hàng của tôi</p>
             {user?.isAdmin && (
-                <p className="infoUser" onClick={() => navigate('/admin')}>Quản lý người dùng</p>
+                <p className="infoUser" onClick={() => handleClickNavigate('admin')}>Quản lý người dùng</p>
             ) }
-            <p className="infoUser" onClick={handleLogout}>Đăng xuất</p>
+            
+            <p className="infoUser" onClick={() => {handleClickNavigate()}}>Đăng xuất</p>
         </div>
     );
-    
-    console.log("user?.isAdmin", user?.isAdmin, user)
+
+    const handleClickNavigate = (type) => {
+        if(type === 'profile'){
+            navigate('/profile-user')
+        }else if( type === 'admin'){
+            navigate('/admin')
+        }else if(type === 'my-order'){
+            navigate('/my-order')
+        }
+        else{
+            handleLogout()
+        }
+        setIsOpenPopup(false)
+    }
+    // setIsOpenPopup
     return (
         <div id="header">
             <div className="logo-header">
@@ -66,8 +82,10 @@ const HeaderComponent = () => {
                         <nav className="nav-info">
                             <ul className="ul-menu">
                                     <>
-                                        <Popover content={content} trigger="click">
-                                            <Button  style={{width:'70%', height: '80px', marginTop: '10px', marginLeft: '30px' , border: 'none'}}>
+                                        <Popover content={content} trigger="click" open={isOpenPopup}>
+                                            <Button  style={{width:'70%', height: '80px', marginTop: '10px', marginLeft: '30px' , border: 'none'}}
+                                            onClick={() => setIsOpenPopup((prev) => !prev)}
+                                            >
                                                 {userAvatar ? (
                                                     <img src={`/img/${userAvatar}`} style={{
                                                         height: '60px',

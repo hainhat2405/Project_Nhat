@@ -4,6 +4,7 @@ import MenuComponent from '../../components/MenuComponent';
 import FooterComponent from '../../components/FooterComponent';
 import ProductDetailComponents from '../../components/productDetailComponents';
 import { useParams } from "react-router-dom";
+
 const ProductDetailsPage = () => {
 
     const handlePopup = (url) => {

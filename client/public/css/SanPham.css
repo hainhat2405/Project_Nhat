@@ -399,14 +399,14 @@
     background: #00aff0;
 }
 
-.ttmuahang{
+/* .ttmuahang{
     width: 50%;
     height: 100%;
     float: right;
     margin-right: 5%;
     border-radius: 8%;
     background:#D40736;
-}
+} */
 
 #showcart{
     position: fixed;
@@ -914,7 +914,7 @@ t-sp2
     width: 80%;
     height: 150px;
     margin-left: 5%;
-    background-image: linear-gradient( to bottom, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, 0) 100% ) ,url(../img/Logo-DSHN.jpg);
+    /* background-image: linear-gradient( to bottom, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, 0) 100% ) ,url(../img/Logo-DSHN.jpg); */
     background-size: 100% 100%; /* chiều rộng và chiều cao 50% của phần tử */
     text-shadow: 0 2px 4px rgba(0, 0, 0, .9);
 }

@@ -11,7 +11,7 @@ const createUser = async (req, res) => {
         if (!name || !email || !password || !confirmPassword || !phone || !address || !avatar) {
             return res.status(200).json({
                 status: 'ERR',
-                message: 'The input is required 123'
+                message: 'The input is required'
             });
         } else if (!isCheckEmail) {
             return res.status(200).json({
@@ -160,7 +160,6 @@ const getDetailsUser = async (req, res) => {
 };
 
 const refreshToken = async (req, res) => {
-    console.log("req.cookies.refreshToken",req.cookies.refreshToken)
     try {
         const token = req.cookies.refreshToken
         if(!token){

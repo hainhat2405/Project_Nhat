@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.order-container {
+    width: 60%;
+    margin: auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.order-status {
+    color: red;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.order-item img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.order-details {
+    flex: 1;
+}
+
+.order-price {
+    width: 100px;
+    text-align: right;
+}
+
+.order-total {
+    justify-content: space-between;
+    margin-top: 10px;
+    font-weight: bold;
+    float: right;
+}
+
+.order-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+
+.order-actions button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.details-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.container_Order {
+    background-color: red;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.info-box {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.product-list img {
+    max-width: 50px;
+    vertical-align: middle;
+}
+
+.product-list .product-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.summary {
+    text-align: right;
+}
+
+.summary p {
+    margin: 5px 0;
+}

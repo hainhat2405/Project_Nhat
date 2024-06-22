@@ -8,6 +8,7 @@ router.get('/get-details/:id', ProductController.getDetailProduct)
 router.delete('/delete/:id', ProductController.deleteProduct)
 router.get('/get-all', ProductController.getAllProduct)
 router.post('/delete-many', ProductController.deleteManyProduct)
+router.get('/get-all-type', ProductController.getAllType)
 
 
 module.exports = router

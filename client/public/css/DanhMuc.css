@@ -467,3 +467,10 @@
     border-radius:100%; 
 
 }
+
+.phanTrang{
+    width: 50%;
+    height: 50px;
+    margin-left: 25%;
+    margin-top: 20px;
+}

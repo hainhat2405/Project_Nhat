@@ -1,11 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as ProductService from '../services/ProductService';
 
 const MenuComponent = () => {
+    const [typeProduct, setTypeProduct] = useState([])
     const navigate = useNavigate();
     const handleDetailsProduct = (id) => {
         navigate(`/order`)
     }
+    const fetchAllTypeProduct = async () => {
+        const res = await ProductService.getAllTypeProduct()
+        if(res?.status === 'OK'){
+            setTypeProduct(res?.data)
+        }
+        
+    }
+
+    useEffect(() => {
+        fetchAllTypeProduct()
+    }, [])
+    const handleNavigateType = (type) => {
+        // Create a mapping of specific diacritical characters to their replacements
+        const customReplacements = {
+            'Đ': 'D',
+            'đ': 'd',
+            // Add other custom replacements as needed
+        };
+    
+        // Normalize the string and replace diacritical marks
+        let cleanedType = type.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    
+        // Replace custom characters
+        cleanedType = cleanedType.replace(/[Đđ]/g, match => customReplacements[match]);
+    
+        // Replace any remaining non-alphanumeric characters with '_'
+        cleanedType = cleanedType.replace(/[^a-zA-Z0-9]/g, '_');
+    
+        // Navigate to the cleaned URL
+        navigate(`/product/${cleanedType}`,{state: type});
+    };
+    
     return (
         <div id="menu">
             <div id="menu-dmsp">
@@ -14,26 +48,11 @@ const MenuComponent = () => {
                         <li>
                             <a style={{ padding: '15px 20px', color: 'white' }} href="">DANH MỤC SẢN PHẨM <i style={{ marginLeft: '10px', color: 'white' }} className="far fa-list-alt"></i></a>
                             <ul className="sub-menu">
-                                <li><a href="DanhMuc.html">Bánh kẹo Hà Nội</a>
-                                    <ul className="sub-menu">
-                                        <li><a href="">Bánh Đậu Xanh</a></li>
-                                        <li><a href="">Bánh  Hà Nội</a></li>
-                                        <li><a href="">Kẹo Hà Nội</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="">Mặt hàng đồ khô</a>
-                                    <ul className="sub-menu">
-                                        <li><a href="">Gạo Nết</a></li>
-                                        <li><a href="">Măng,Nấm Khô</a></li>
-                                        <li><a href="">Mì - Miến - Bánh Đa</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="">Nhang Bắc Thơm</a></li>
-                                <li><a href="">Ô mai Hồ Lam - Tiến Thịn</a></li>
-                                <li><a href="">Quả Phật Thủ</a></li>
-                                <li><a href="">Thực Phẩm chín</a></li>
-                                <li><a href="">Trà Thái Nguyên - Trà Các Loại</a></li>
-                                <li><a href="">Trái Cây Hà Nội</a></li>
+                                {typeProduct.map((item) => {
+                                    return (
+                                        <li><a href="" onClick={() => handleNavigateType(item)}>{item}</a></li>
+                                    )
+                                })}
                             </ul>
                         </li>
                     </ul>
@@ -49,7 +68,7 @@ const MenuComponent = () => {
                 <i style={{ padding: '15px 25px', color: 'white' }} className="fa fa-search"></i>
             </div>
             <div id="giohang">
-                <a href="#" onClick={handleDetailsProduct}><i className="fa fa-shopping-cart" style={{ fontSize: '14px' }}></i>Giỏ hàng</a>
+                <a href="" onClick={handleDetailsProduct}><i className="fa fa-shopping-cart" style={{ fontSize: '14px' }}></i>Giỏ hàng</a>
             </div>
         </div>
     );

@@ -1,0 +1,132 @@
+
+
+#menu{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    /* border: 1px solid black; */
+}
+
+
+#menu-dmsp{
+    width: 275px;
+    height:90%;
+    margin-left: 10%;
+    background-color: rgb(96, 177, 38);
+    border-radius: 8px 8px 0px 0px;
+    color: white;
+    float: left;
+}
+
+#search{
+    width: 30%;
+    height: 100%;
+    float: left;
+    margin-left: 10%;
+    border-radius: 4px 0px 0px 4px;
+    margin-left: 8%;
+}
+
+#search-1{
+    width: 100%;
+    height: 100%;
+}
+
+ input[type="search"] /*chỉnh thuộc tính của thẻ input kiểu search */
+{
+    border: 1px solid rgb(96, 177, 38) ; /* là thuộc tính để chỉnh đường viền của input.*/
+    border-radius: 10px 0px 0px 10px;       /*  là thuộc tính để làm bo tròn góc của input.*/
+    font-size: 16px;                        /*  là thuộc tính để chỉnh kích thước phông chữ của input*/
+
+}
+
+#icon-search{
+    width: 5%;
+    height: 100%;
+    float: left;
+    background-color: rgb(96, 177, 38) ;
+    font-size: 16px;
+}
+  
+#giohang{
+    width: 10%;
+    height: 100%;
+    float: right;
+    border: 2px solid rgb(96, 177, 38) ;
+    border-radius: 8px;
+    margin-right: 10%;
+    font-size: 16px;
+
+}
+
+#giohang a {
+    color: rgb(96, 177, 38);
+    text-decoration: none;
+}
+
+#giohang i{
+    padding: 15px 10px;
+}
+.container{
+    max-width: 960px;
+    margin: 0px auto;
+}
+
+#main-menu{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+/* #main-menu li{
+    position: relative;
+} */
+#main-menu li a{
+    display: block;
+    text-decoration: none;
+}
+
+#main-menu ul.sub-menu{
+    /* position: absolute; */
+    background-color: white;
+    padding: 15px 0px;
+    list-style: none;
+    width: 275px;
+    border: 2px solid rgb(96, 177, 38);
+    display: none;
+    color: black;
+    font-size: 16px;
+    position: absolute;
+    top: 150px; /* Điều chỉnh vị trí theo yêu cầu */
+    left: 150;
+    z-index: 10;
+}
+
+#main-menu li:hover>ul.sub-menu{
+    display: block;
+}
+
+#main-menu ul.sub-menu a{
+    padding: 8px 15px;
+    border-bottom: 1px solid greenyellow;
+    left: 0;
+}
+
+
+#main-menu ul.sub-menu li:hover>a{
+    border-bottom: 1px solid red; 
+    
+
+}
+#main-menu ul.sub-menu li:last-child a{
+    border: none;
+   
+}
+
+#main-menu ul.sub-menu ul.sub-menu{
+    left: 250px;
+    top:  -15px
+}
+

@@ -20,14 +20,28 @@ const ProfilePage = () => {
     const [phone, setPhone] = useState('')
     const [address, setAddress] = useState('')
     const [avatar, setAvatar] = useState('')
+    const [city, setCity] = useState('')
     const dispatch = useDispatch()
-    const mutation = useMutationHooks(
+    // const mutation = useMutationHooks(
+    //     (data) => {
+    //         const { id, accessToken, ...rests } = data
+    //         UserService.updateUser(id, rests, accessToken)
+    //     }
+    // )
+    const mutationUpdate = useMutationHooks(
         (data) => {
-            const { id, accessToken, ...rests } = data
-            UserService.updateUser(id, rests, accessToken)
+            const { id, token, ...rests } = data;
+            const res = UserService.updateUser(id, token, rests);
+            return res;
         }
-    )
-    const { data, isPending, isSuccess, isError } = mutation
+    );
+    const { data, isPending, isSuccess, isError } = mutationUpdate;
+    const onUpdateProduct = () => {
+        mutationUpdate.mutate(
+            { id: user?.id, email, name, phone, address, avatar, city, accessToken: user?.accessToken },
+        );
+    };
+    // const { data, isPending, isSuccess, isError } = mutation
     console.log('data', data)
 
     useEffect(() => {
@@ -36,6 +50,7 @@ const ProfilePage = () => {
         setPhone(user?.phone)
         setAddress(user?.address)
         setAvatar(user?.avatar)
+        setCity(user?.city)
     }, [user])
 
     useEffect(() => {
@@ -66,6 +81,9 @@ const ProfilePage = () => {
     const handleOnchangeAddress = (value) => {
         setAddress(value)
     }
+    const handleOnchangeCity = (value) => {
+        setCity(value)
+    }
     const handleOnchangeAvatar = (event) => {
         const file = event.target.files[0]; // Lấy file đầu tiên từ danh sách file
         if (file) {
@@ -73,10 +91,10 @@ const ProfilePage = () => {
         }
     };
 
-    const handleUpdate = () => {
-        mutation.mutate({ id: user?.id, email, name, phone, address, avatar, accessToken: user?.accessToken })
+    // const handleUpdate = () => {
+    //     mutation.mutate({ id: user?.id, email, name, phone, address, avatar, accessToken: user?.accessToken })
 
-    }
+    // }
 
 
 
@@ -145,6 +163,20 @@ const ProfilePage = () => {
                             <span id="chkSonha" style={{ color: 'red', fontSize: '20px', paddingLeft: '80px', display: 'inline' }}></span>
                         </div>
                     </div>
+                    <div className="ttkh4">
+                        <div className="sonha">
+                            <span><i className="fa fa-map-marker"></i></span>
+                            <input
+                                type="text"
+                                name="city"
+                                id="city"
+                                value={city}
+                                onChange={(event) => handleOnchangeCity(event.target.value)}
+                                placeholder='Nhập thành phố'
+                            />
+                            <span id="chkSonha" style={{ color: 'red', fontSize: '20px', paddingLeft: '80px', display: 'inline' }}></span>
+                        </div>
+                    </div>
 
                     <div className="ttkh5">
                         <div className="note">
@@ -169,7 +201,7 @@ const ProfilePage = () => {
                     </div>
                     <button type="submit"
                         className="dongy"
-                        onClick={handleUpdate}
+                        onClick={onUpdateProduct}
                         style={{ color: 'white', fontSize: '20px', marginTop: '20px', marginLeft: '36%' }}>
                         Thay đổi thông tin
                     </button>

@@ -6,6 +6,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrderProduct } from '../redux/slides/orderSlide';
 import { converPrice } from "../utils";
+import "../assets/css/list/SanPham.css"
+import "../assets/css/list/menu.css"
+import "../assets/css/list/header.css"
+import { InputNumber, message } from "antd";
+import * as Message from './Message/Message'
 
 const ProductDetailComponents = ({ idProduct }) => {
     const user = useSelector((state) => state.user)
@@ -35,18 +40,38 @@ const ProductDetailComponents = ({ idProduct }) => {
 
 
     const { data: productDetails } = useQuery({
-        queryKey: ['productDetails', idProduct], 
-        queryFn: () => fetchGetDetailsProduct(idProduct), 
-        enabled: !!idProduct, 
+        queryKey: ['productDetails', idProduct],
+        queryFn: () => fetchGetDetailsProduct(idProduct),
+        enabled: !!idProduct,
     });
 
 
 
+    // const handleAddOrderProduct = () => {
+    //     if (!user?.id) {
+    //         navigate('/login', { state: location?.pathname })
+    //     }
+    //     else if(productDetails?.data?.amount === 0){
+    //         navigate('/login', { state: location?.pathname })
+    //     }
+    //     else {
+    //         dispatch(addOrderProduct({
+    //             orderItem: {
+    //                 name: productDetails?.data?.name,
+    //                 amount: numProduct,
+    //                 image: productDetails?.data?.image,
+    //                 price: productDetails?.data?.price,
+    //                 product: productDetails?.data?._id,
+    //             }
+    //         }))
+    //     }
+    // }
     const handleAddOrderProduct = () => {
         if (!user?.id) {
-            navigate('/login', { state: location?.pathname })
-        }
-        else {
+            navigate('/login', { state: location?.pathname });
+        } else if (numProduct === 0) {
+            alert('Số lượng sản phẩm không thể bằng 0.'); // Hiển thị thông báo
+        } else {
             dispatch(addOrderProduct({
                 orderItem: {
                     name: productDetails?.data?.name,
@@ -55,9 +80,10 @@ const ProductDetailComponents = ({ idProduct }) => {
                     price: productDetails?.data?.price,
                     product: productDetails?.data?._id,
                 }
-            }))
+            }));
+            Message.success('Mua thành công.'); // Hiển thị thông báo
         }
-    }
+    };
     console.log("productde", productDetails)
     console.log("productDetails11111", productDetails, user)
     // const {isLoading, data: productDetails} = useQuery({ queryKey: ['product-details'], fetchGetDetailsProduct, enable: !!idProduct})
@@ -72,8 +98,8 @@ const ProductDetailComponents = ({ idProduct }) => {
 
     return (
         <>
-            <div class="gioiThieu-tieude">
-                <div class="breadcrumbs">
+            <div className="gioiThieu-tieude">
+                <div className="breadcrumbs">
                     <span >
                         <span>
                             <a href="TrangChu.html">Trang chủ</a>
@@ -88,7 +114,7 @@ const ProductDetailComponents = ({ idProduct }) => {
                 </div>
             </div>
             <div id="content-sanPham" >
-                <div class="thongTin" >
+                <div className="thongTin" >
                     <div className="thongTin-1">
                         <div className="main">
                             <img src={`/img/${productDetails?.data?.image}`} alt="" className="img-feature" />
@@ -112,11 +138,20 @@ const ProductDetailComponents = ({ idProduct }) => {
                                 <div className="soLuong">
                                     <span>Số Lượng</span>
                                 </div>
-                                <input type="number" onChange={(event) => onChange(event.target.value)}
+                                <InputNumber
+                                    min={1}
+                                    max={100}
+                                    defaultValue={0}
+                                    changeOnWheel
+                                    onChange={onChange}
+                                    style={{ width: '20%', height: '100%', padding: '0.375rem 0.75rem' }}
+                                // onChange={(value) => handleChangeCount(value, order.product)}
+                                />
+                                {/* <input type="number" onChange={(event) => onChange(event.target.value)}
                                     value={numProduct} name="soLuong" min="1" max="" defaultValue="1" style={{ width: '15%', height: '100%', padding: '0.375rem 0.75rem' }} />
-                                <input type="hidden" name="idSP_hidden" value="" style={{ width: '72%', height: '100%', padding: '0.375rem 0.75rem' }} />
+                                <input type="hidden" name="idSP_hidden" value="" style={{ width: '72%', height: '100%', padding: '0.375rem 0.75rem' }} /> */}
                             </div>
-                            <a href="#" className="btn2" onClick={handleAddOrderProduct}>Thêm vào giỏ</a>
+                            <a href="" className="btn2" onClick={handleAddOrderProduct}>Thêm vào giỏ</a>
                         </form>
                         <div id="share">
                             <span onClick={handleAddOrderProduct}>SHARE:</span>
@@ -175,7 +210,7 @@ const ProductDetailComponents = ({ idProduct }) => {
                         <span><i className="fas fa-box-open"></i>Được kiểm tra hàng</span>
                         <span><i className="fab fa-cc-amazon-pay"></i>Thanh toán nhận hàng</span>
                         <span><i className="fas fa-award"></i>Chất lượng, Uy tín</span>
-                        <a href="#" onClick={showCart}><i className="fa-solid fa-phone fa-rotate-270" style={{ color: 'white' }}></i>Hotline: 0835286779</a>
+                        <a href="" onClick={showCart}><i className="fa-solid fa-phone fa-rotate-270" style={{ color: 'white' }}></i>Hotline: 0835286779</a>
                     </div>
 
                 </div>

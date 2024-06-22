@@ -3,24 +3,26 @@ const Product = require('../models/ProductModel');
 
 const createProduct = (newProduct) => {
     return new Promise(async (resolve, reject) => {
-        const { name, image, type, price, countInStock, rating, description, discount} = newProduct;
+        const { name, image, type, price, countInStock, rating, description, discount } = newProduct;
         try {
             const checkProduct = await Product.findOne({ name });
             if (checkProduct !== null) {
                 return resolve({
-                    status: "OK",
+                    status: "ERR",
                     message: "The name of product is already",
                 });
             }
+            // const finalCountInStock = isNaN(Number(countInStock)) ? 0 : Number(countInStock);
+            const finalDiscount = isNaN(Number(discount)) ? 0 : Number(discount);
             const newProduct = await Product.create({
                 name,
                 image,
-                type, 
-                price, 
-                countInStock, 
-                rating, 
+                type,
+                price,
+                countInStock: Number(countInStock),
+                rating,
                 description,
-                discount
+                discount: finalDiscount
             });
 
             if (newProduct) {
@@ -51,7 +53,7 @@ const updateProduct = (id, data) => {
             }
 
             const updateProduct = await Product.findByIdAndUpdate(id, data, { new: true });
-            
+
             return resolve({
                 status: 'OK',
                 message: "Product updated successfully",
@@ -78,7 +80,7 @@ const deleteProduct = (id) => {
             }
 
             await Product.findByIdAndDelete(id);
-            
+
             return resolve({
                 status: 'OK',
                 message: "Delete product successfully",
@@ -95,8 +97,8 @@ const deleteProduct = (id) => {
 const deleteManyProduct = (ids) => {
     return new Promise(async (resolve, reject) => {
         try {
-            await Product.deleteMany({_id: ids});
-            
+            await Product.deleteMany({ _id: ids });
+
             return resolve({
                 status: 'OK',
                 message: "Delete product successfully",
@@ -110,15 +112,15 @@ const deleteManyProduct = (ids) => {
     });
 };
 
-const getAllProduct = (limit, page, sort,filter) => {
+const getAllProduct = (limit, page, sort, filter) => {
     return new Promise(async (resolve, reject) => {
         try {
             const totalProduct = await Product.countDocuments()
-            if(filter){
+            if (filter) {
                 const label = filter[0]
-                console.log("label",label)
+                console.log("label", label)
                 const allObjectFilter = await Product.find({
-                    [label]: {'$regex': filter[1]}
+                    [label]: { '$regex': filter[1] }
                 }).limit(limit).skip(page * limit)
                 return resolve({
                     status: 'OK',
@@ -129,7 +131,7 @@ const getAllProduct = (limit, page, sort,filter) => {
                     totalPage: Math.ceil(totalProduct / limit)
                 });
             }
-            if(sort){
+            if (sort) {
                 const objectSort = {}
                 objectSort[sort[1]] = sort[0]
                 const allProductSort = await Product.find().limit(limit).skip(page * limit).sort(objectSort)
@@ -151,7 +153,25 @@ const getAllProduct = (limit, page, sort,filter) => {
                 pageCurrent: Number(page + 1),
                 totalPage: Math.ceil(totalProduct / limit)
             });
-            
+
+        } catch (e) {
+            reject({
+                status: 'ERR',
+                message: e.message,
+            });
+        }
+    });
+};
+const getAllType = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const allType = await Product.distinct('type')
+            return resolve({
+                status: 'OK',
+                message: "Success",
+                data: allType,
+            });
+
         } catch (e) {
             reject({
                 status: 'ERR',
@@ -171,7 +191,7 @@ const getDetailProduct = (id) => {
                     message: "The product is not defined",
                 });
             }
-            
+
             return resolve({
                 status: 'OK',
                 message: "SUCCESS",
@@ -192,5 +212,6 @@ module.exports = {
     getDetailProduct,
     deleteProduct,
     getAllProduct,
-    deleteManyProduct
+    deleteManyProduct,
+    getAllType
 };

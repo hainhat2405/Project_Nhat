@@ -162,7 +162,7 @@ const AdminUser = () => {
     }
   )
   const getAllUser = async () => {
-    const res = await UserService.getAllUser()
+    const res = await UserService.getAllUser(user?.accessToken)
     return res
   }
   const { data, isPending, isSuccess, isError } = mutation
@@ -308,20 +308,6 @@ const AdminUser = () => {
         setTimeout(() => searchInput.current?.select(), 100);
       }
     },
-    // render: (text) =>
-    //   searchedColumn === dataIndex ? (
-    //     <Highlighter
-    //       highlightStyle={{
-    //         backgroundColor: '#ffc069',
-    //         padding: 0,
-    //       }}
-    //       searchWords={[searchText]}
-    //       autoEscape
-    //       textToHighlight={text ? text.toString() : ''}
-    //     />
-    //   ) : (
-    //     text
-    //   ),
   });
 
   const columns = [
@@ -489,14 +475,6 @@ const AdminUser = () => {
     setIsOpenDrawer(false);
   };
 
-
-  // const onUpdateUser = () => {
-  //   mutationUpdate.mutate({id: rowSelected, token: user?.accessToken, ...stateUserDetails},{
-  //     onSettled: () => {
-  //       queryUser.refetch()
-  //     }
-  //   })
-  // }
   const onUpdateUser = () => {
     mutationUpdate.mutate(
       { id: rowSelected, token: user?.accessToken, ...stateUserDetails },

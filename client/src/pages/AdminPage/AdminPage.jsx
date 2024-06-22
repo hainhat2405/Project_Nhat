@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { AppstoreOutlined, UserOutlined, SettingOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, UserOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Menu, Switch } from 'antd';
 // import useSelection from 'antd/es/table/hooks/useSelection';
 import AdminProduct from '../../components/AdminProduct/AdminProduct';
 import AdminUser from '../../components/AdminUser/AdminUser';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import AdminOrder from '../../components/AdminOrder/AdminOrder';
 
 const items = [
   {
@@ -61,27 +62,9 @@ const items = [
     // ],
   },
   {
-    key: 'sub4',
-    label: 'Navigation Three',
-    icon: <SettingOutlined />,
-    children: [
-      {
-        key: '9',
-        label: 'Option 9',
-      },
-      {
-        key: '10',
-        label: 'Option 10',
-      },
-      {
-        key: '11',
-        label: 'Option 11',
-      },
-      {
-        key: '12',
-        label: 'Option 12',
-      },
-    ],
+    key: 'order',
+    label: 'Đơn hàng',
+    icon: <ShoppingCartOutlined />,
   },
 ];
 const AdminPage = () => {
@@ -113,6 +96,10 @@ const AdminPage = () => {
         return(
           <AdminProduct/>
         )
+      case 'order':
+        return(
+          <AdminOrder/>
+        )
         default:
           return 
           <>
@@ -127,7 +114,7 @@ const AdminPage = () => {
         <div className="feature">
 
           <h3>{user?.name}</h3>
-          <a href="#"  onClick={handleLogout}>
+          <a href=""  onClick={handleLogout}>
             <i className="fa fa-power-off" style={{ fontSize: '20px', color: 'rgb(48, 130, 198)' }}></i>Đăng xuất
           </a>
         </div>

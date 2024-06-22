@@ -14,7 +14,7 @@ const initialState = {
         //     },
         // },
     ],
-    selectedItemOrder:[],
+    orderItemsSelected:[],
     ShippingAddress: {
         // fullName: {type: String, required: true},
         // address: {type: String, required: true,},
@@ -24,7 +24,7 @@ const initialState = {
     paymentMethod: '',
     itemPrice: 0,
     shippingPrice: 0,
-    taxPrice: 0,
+    // taxPrice: 0,
     totalPrice: 0,
     user: '',
     isPaid: false,
@@ -47,27 +47,68 @@ export const orderSlide = createSlice({
                 state.orderItems.push(orderItem)
             }
         } ,
+        // increaseAmount: (state, action) => {
+        //     const {idProduct} = action.payload
+        //     const itemOrder = state?.orderItems?.find((item) => item?.product === idProduct)
+        //     itemOrder.amount++
+        // },
+        // decreaseAmount: (state, action) => {
+        //     const {idProduct} = action.payload
+        //     const itemOrder = state?.orderItems?.find((item) => item?.product === idProduct)
+        //     itemOrder.amount--
+        // },
+        increaseAmount : (state, action) => {
+            const { idProduct } = action.payload;
+            const itemOrder = state?.orderItems?.find((item) => item?.product === idProduct);
+            const itemOrderSelected = state?.orderItemsSelected?.find((item) => item?.product === idProduct);
+            itemOrder.amount++;
+            if (itemOrderSelected) {
+                itemOrderSelected.amount++
+            }
+        },
+        
+        decreaseAmount : (state, action) => {
+            const { idProduct } = action.payload;
+            const itemOrder = state?.orderItems?.find((item) => item?.product === idProduct);
+            const itemOrderSelected = state?.orderItemsSelected?.find((item) => item?.product === idProduct);
+            itemOrder.amount--;
+            if (itemOrderSelected) { // Ensure amount doesn't go below 1
+                itemOrderSelected.amount--
+            }
+        },
+        
         removeOrderProduct: (state, action) => {
             const {idProduct} = action.payload
             const itemOrder = state?.orderItems?.filter((item) => item?.product !== idProduct)
-            console.log('removeOrderProduct', {idProduct, itemOrder})
+            const itemOrderSelected = state?.orderItemsSelected?.filter((item) => item?.product !== idProduct)
+            
             state.orderItems = itemOrder 
+            state.orderItemsSelected = itemOrderSelected
             
         },
-        // selectedOrder: (state, action) => {
-        //     const listChecked = action.payload
-        //     const orderSelected = []
-        //     state.orderItems.forEach((order) => {
-        //         if(listChecked.includes(order.product)){
-        //             orderSelected.push(order)
-        //         }
-        //     })
-        //     state.selectedItemOrder = orderSelected
+        removeAllOrderProduct: (state, action) => {
+            const {listChecked} = action.payload
+            const itemOrders = state?.orderItems?.filter((item) => !listChecked.includes(item.product))
+            const itemOrderSelected = state?.orderItems?.filter((item) => !listChecked.includes(item.product))
+            state.orderItems = itemOrders
+            state.orderItemsSelected = itemOrderSelected
             
-        // } 
+        },
+        selectedOrder: (state, action) => {
+            const {listChecked} = action.payload
+            const orderSelected = []
+            state?.orderItems?.forEach((order) => {
+                if(listChecked.includes(order.product)){
+                    orderSelected.push(order)
+                }
+            })
+            state.orderItemsSelected = orderSelected
+            // console.log('select',action, state)
+            
+        } 
     }
 })
 
-export const {addOrderProduct, removeOrderProduct,selectedOrder} = orderSlide.actions
+export const {addOrderProduct, removeOrderProduct,selectedOrder,removeAllOrderProduct, increaseAmount,decreaseAmount} = orderSlide.actions
 
 export default orderSlide.reducer
