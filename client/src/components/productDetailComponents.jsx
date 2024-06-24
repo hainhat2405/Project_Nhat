@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addOrderProduct } from '../redux/slides/orderSlide';
 import { converPrice } from "../utils";
 import "../assets/css/list/SanPham.css"
-import "../assets/css/list/menu.css"
-import "../assets/css/list/header.css"
 import { InputNumber, message } from "antd";
 import * as Message from './Message/Message'
 
@@ -118,15 +116,8 @@ const ProductDetailComponents = ({ idProduct }) => {
                     <div className="thongTin-1">
                         <div className="main">
                             <img src={`/img/${productDetails?.data?.image}`} alt="" className="img-feature" />
-                            <div className="control prev"><i className="fa-solid fa-chevron-left" style={{ color: 'black', marginTop: '100px' }}></i></div>
-                            <div className="control next"><i className="fa-solid fa-chevron-right" style={{ color: 'black', marginTop: '100px' }}></i></div>
-                        </div>
-                        <div className="list-image">
-                            <div><img src="img/banhcombaominh.jpg" alt="" /></div>
-                            <div><img src="img/banh-com-bao-minh-7-1.jpg" alt="" /></div>
-                            <div><img src="img/banh-com-4-2-e1666235165251.jpg" alt="" /></div>
-                            <div><img src="img/banh-com-bao-minh-1-1 (1).jpg" alt="" /></div>
-                            <div><img src="img/banh-com-bao-minh-7-2.jpg" alt="" /></div>
+                            {/* <div className="control prev"><i className="fa-solid fa-chevron-left" style={{ color: 'black', marginTop: '100px' }}></i></div>
+                            <div className="control next"><i className="fa-solid fa-chevron-right" style={{ color: 'black', marginTop: '100px' }}></i></div> */}
                         </div>
                     </div>
                     <div className="thongTin-2">

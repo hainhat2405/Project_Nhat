@@ -7,6 +7,9 @@ import AdminUser from '../../components/AdminUser/AdminUser';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import AdminOrder from '../../components/AdminOrder/AdminOrder';
+import ConfirmOrder from '../../components/AdminOrder/confirmOrder';
+import "../../assets/css/list/admin123.css"
+import "../../assets/css/list/adminUser.css"
 
 const items = [
   {
@@ -65,6 +68,30 @@ const items = [
     key: 'order',
     label: 'Đơn hàng',
     icon: <ShoppingCartOutlined />,
+    children: [
+      {
+        key: 'order',
+        label: 'Tất cả đơn hàng',
+      },
+      {
+        key: 'confirmOrder',
+        label: 'Xác nhận đơn hàng',
+      },
+      {
+        key: 'sub3',
+        label: 'Submenu',
+        children: [
+          {
+            key: '7',
+            label: 'Option 7',
+          },
+          {
+            key: '8',
+            label: 'Option 8',
+          },
+        ],
+      },
+    ],
   },
 ];
 const AdminPage = () => {
@@ -99,6 +126,10 @@ const AdminPage = () => {
       case 'order':
         return(
           <AdminOrder/>
+        )
+      case 'confirmOrder':
+        return(
+          <ConfirmOrder/>
         )
         default:
           return 

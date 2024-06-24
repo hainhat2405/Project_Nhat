@@ -6,7 +6,7 @@ import * as UserService from '../../services/UserService';
 import { resetUser } from '../../redux/slides/useSlide';
 import Loading from "../LoadingComponents/Loading";
 import { isPending } from "@reduxjs/toolkit";
-
+import "../../assets/css/list/header.css"
 const HeaderComponent = () => {
     const user = useSelector((state) => state.user)
     const [userName, setUserName] = useState("")
@@ -69,7 +69,7 @@ const HeaderComponent = () => {
                 <ul className="main-nav">
                     <li><a href="/">Trang chủ</a></li>
                     <li><a href="/gioiThieu">Giới thiệu</a></li>
-                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+                    <li><a href="#">Thông tin</a></li>
                     <li><a href="/tinTuc">Tin tức đặc sản</a></li>
                     <li><a href="#">Liên hệ</a></li>
                 </ul>
@@ -113,7 +113,7 @@ const HeaderComponent = () => {
                         <nav className="nav-info">
                             <ul className="ul-menu">
                                 <li>
-                                    <a href="/login"><h2>Đăng nhập</h2></a>
+                                    <a href="/login"><h3>Đăng nhập</h3></a>
                                 </li>
                             </ul>
                         </nav>

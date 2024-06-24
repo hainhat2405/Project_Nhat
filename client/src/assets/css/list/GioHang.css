@@ -15,131 +15,6 @@ body{
 /* ---------------Menu-------------------- */
 
 
-#menu{
-    width: 100%;
-    height: 50px;
-    background-color: white;
-    /* border: 1px solid black; */
-}
-
-#menu-dmsp{
-    width: 300px;
-    height:100%;
-    margin-left: 10%;
-    background-color: rgb(96, 177, 38);
-    border-radius: 8px 8px 0px 0px;
-    color: white;
-    float: left;
-}
-
-#search{
-    width: 30%;
-    height: 100%;
-    float: left;
-    margin-left: 5%;
-    border-radius: 4px 0px 0px 4px;
-}
-
-#search-1{
-    width: 100%;
-    height: 100%;
-}
-
- input[type="search"] /*chỉnh thuộc tính của thẻ input kiểu search */
-{
-    border: 1px solid rgb(96, 177, 38) ; /* là thuộc tính để chỉnh đường viền của input.*/
-    border-radius: 10px 0px 0px 10px;       /*  là thuộc tính để làm bo tròn góc của input.*/
-    font-size: 16px;                        /*  là thuộc tính để chỉnh kích thước phông chữ của input*/
-
-}
-
-#icon-search{
-    width: 5%;
-    height: 100%;
-    float: left;
-    background-color: rgb(96, 177, 38) ;
-}
-  
-#giohang{
-    width: 10%;
-    height: 100%;
-    float: right;
-    border: 2px solid rgb(96, 177, 38) ;
-    border-radius: 8px;
-    margin-right: 16%;
-
-}
-
-#giohang a {
-    color: rgb(96, 177, 38);
-    text-decoration: none;
-}
-
-#giohang i{
-    padding: 15px 10px;
-}
-.container{
-    max-width: 960px;
-    margin: 0px auto;
-}
-
-#main-menu{
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-#main-menu li{
-    position: relative;
-}
-#main-menu li a{
-    display: block;
-    text-decoration: none;
-    text-align: left;
-}
-
-#main-menu ul.sub-menu{
-    position: absolute;
-    background-color: white;
-    padding: 15px 0px;
-    list-style: none;
-    width: 300px;
-    border: 2px solid rgb(96, 177, 38);
-    display: none;
-    color: black;
-}
-
-#main-menu li:hover>ul.sub-menu{
-    display: block;
-}
-
-#main-menu ul.sub-menu a{
-    padding: 8px 15px;
-    border-bottom: 1px solid greenyellow;
-    left: 0;
-}
-
-
-#main-menu ul.sub-menu li:hover>a{
-    border-bottom: 1px solid red;
-    
-
-}
-#main-menu ul.sub-menu li:last-child a{
-    border: none;
-   
-}
-
-#main-menu ul.sub-menu ul.sub-menu{
-    left: 300px;
-    top:  -15px
-}
-
-.sub-menu i{
-    color: rgb(96, 177, 38);
-    padding: 0px 10px;
-}
 /* -----------------Tieu de--------------------- */
 .gioiThieu-tieude{
     width: 100%;
@@ -172,7 +47,7 @@ body{
 
 #container1 h1{
     text-align: center;
-    padding-top: 50px;
+    padding-top: 70px;
     font-size: 26px;
     line-height: 1.2;
     color: #60b126;
@@ -194,9 +69,11 @@ body{
 
 .ttmuahang{
     width: 30%;
+    height: 60px;
     background: #60b126;
     color: white;
     float: left;
+    padding: 10px;
     
 }
 

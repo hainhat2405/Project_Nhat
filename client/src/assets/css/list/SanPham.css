@@ -43,7 +43,7 @@
 
 .thongTin{
     width: 80%;
-    height: 600px;
+    height: 520px;
     margin-left: 10%;
     margin-top: 10px;
     background-color: s;
@@ -914,6 +914,7 @@ t-sp2
     width: 80%;
     height: 150px;
     margin-left: 5%;
+    /* background-image: linear-gradient( to bottom, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, 0) 100% ) ,url(../img/Logo-DSHN.jpg); */
     background-size: 100% 100%; /* chiều rộng và chiều cao 50% của phần tử */
     text-shadow: 0 2px 4px rgba(0, 0, 0, .9);
 }
@@ -1055,7 +1056,7 @@ t-sp2
     float: left;
    
 }
-/* 
+
 .tbl-main{
     width: 100%;
     height: 30px;
@@ -1072,7 +1073,7 @@ t-sp2
     color: white;
 }
 .tbl1{
-    width: 15%;
+    width: 30%;
     height: -10px;
 }
 
@@ -1101,7 +1102,7 @@ t-sp2
 
 
 .tbl3{
-    width: 25%;
+    width: 30%;
     height: -10px;
 }
 
@@ -1120,12 +1121,12 @@ t-sp2
 }
 
 .tbl4{
-    width: 15%;
+    width: 10%;
     height: -10px;
     padding-left: 20px;
 }
 .tbl5{
-    width: 25%;
+    width: 10%;
     height: -10px;
     padding-left: 50px;
 }
@@ -1148,5 +1149,5 @@ t-sp2
     height: 41px;
     background: rgb(24, 68, 158);
     margin-top: px;
-} */
+}
 

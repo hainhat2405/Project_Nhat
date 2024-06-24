@@ -12,7 +12,7 @@ import FooterComponent from '../../components/FooterComponent';
 import { useMutationHooks } from '../../hooks/useMutationHook';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as Message from '../../components/Message/Message';
-
+import "../../assets/css/list/GioHang.css"  
 const MyOrder = () => {
     const location = useLocation()
     const { state } = location
@@ -88,19 +88,19 @@ const MyOrder = () => {
 
     const handleDetailsOrder = (id) => {
         navigate(`/details-order/${id}`, {
-          state: {
-            token: state?.token
-          }
+            state: {
+                token: state?.token
+            }
         })
-            console.log('orID', order?._id)
-      }
+        console.log('orID', order?._id)
+    }
     return (
         <>
             <HeaderComponent />
             <MenuComponent />
             {/* <Loading isPending={isLoading}> */}
 
-
+            <h1>Đơn hàng</h1>
             {data?.map((order) => {
                 return (
                     <>
@@ -118,10 +118,18 @@ const MyOrder = () => {
                                 <div>Tổng tiền:</div>
                                 <div>{converPrice(order?.itemsPrice)}</div>
                             </div>
-                            <div className="order-actions">
-                                <button className="cancel-button" onClick={() => handleCanceOrder(order)}>Hủy đơn hàng</button>
-                                <button className="details-button" onClick={() => handleDetailsOrder(order?._id)}>Xem chi tiết</button>
-                            </div>
+
+                            {order?.isDelivered ? (
+                                <div className="order-actions">
+                                    <button className="details-button" onClick={() => handleDetailsOrder(order?._id)}>Xem chi tiết</button>
+                                </div>
+                            ) : (
+                                <div className="order-actions">
+                                    <button className="cancel-button" onClick={() => handleCanceOrder(order)}>Hủy đơn hàng</button>
+                                    <button className="details-button" onClick={() => handleDetailsOrder(order?._id)}>Xem chi tiết</button>
+                                </div>
+                            )}
+
                         </div>
 
                     </>

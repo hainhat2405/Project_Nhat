@@ -66,27 +66,27 @@ const InputConfirmPassword = (props) => {
 
     return (
         <Form.Item
-                name="confirm"
-                label="Confirm Password"
-                dependencies={['password']}
-                hasFeedback
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please confirm your password!',
+            name="confirm"
+            label="Confirm Password"
+            dependencies={['password']}
+            hasFeedback
+            rules={[
+                {
+                    required: true,
+                    message: 'Please confirm your password!',
+                },
+                ({ getFieldValue }) => ({
+                    validator(_, value) {
+                        if (!value || getFieldValue('password') === value) {
+                            return Promise.resolve();
+                        }
+                        return Promise.reject(new Error('The new password that you entered do not match!'));
                     },
-                    ({ getFieldValue }) => ({
-                        validator(_, value) {
-                            if (!value || getFieldValue('password') === value) {
-                                return Promise.resolve();
-                            }
-                            return Promise.reject(new Error('The new password that you entered do not match!'));
-                        },
-                    }),
-                ]}
-            >
-                <Input.Password placeholder={placeholder} value={props.value} {...rests} onChange={handleOnchangeConfirmPassword} />
-            </Form.Item>
+                }),
+            ]}
+        >
+            <Input.Password placeholder={placeholder} value={props.value} {...rests} onChange={handleOnchangeConfirmPassword} />
+        </Form.Item>
     );
 };
 
@@ -101,19 +101,19 @@ const InputName = (props) => {
 
     return (
         <Form.Item
-                name="nickname"
-                label="Nickname"
-                tooltip="What do you want others to call you?"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your nickname!',
-                        whitespace: true,
-                    },
-                ]}
-            >
-                <Input placeholder={placeholder} value={props.value} {...rests} onChange={handleOnchangeName} />
-            </Form.Item>
+            name="nickname"
+            label="Nickname"
+            tooltip="What do you want others to call you?"
+            rules={[
+                {
+                    required: true,
+                    message: 'Please input your nickname!',
+                    whitespace: true,
+                },
+            ]}
+        >
+            <Input placeholder={placeholder} value={props.value} {...rests} onChange={handleOnchangeName} />
+        </Form.Item>
     );
 };
 
@@ -128,24 +128,40 @@ const InputPhone = (props) => {
 
     return (
         <Form.Item
-                name="phone"
-                label="Phone Number"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your phone number!',
-                    },
-                ]}
-            >
-                <Input
-                    style={{
-                        width: '100%',
-                    }}
-                    placeholder={placeholder} value={props.value} {...rests} onChange={handleOnchangePhone}
-                />
-            </Form.Item>
+            name="phone"
+            label="Phone Number"
+            rules={[
+                {
+                    required: true,
+                    message: 'Please input your phone number!',
+                },
+            ]}
+        >
+            <Input
+                style={{
+                    width: '100%',
+                }}
+                placeholder={placeholder} value={props.value} {...rests} onChange={handleOnchangePhone}
+            />
+        </Form.Item>
     );
 };
 
+const InputSearch = (props) => {
+    return (
+        <>
+            <div id="search">
+                <div id="search-1">
+                    {/* <input type="search" name="src" id="src" style={{ width: '100%', height: '100%', padding: '0.375rem 0.75rem' }} placeholder="Tìm Kiếm Sản Phẩm" onSearch/> */}
+                    <Input placeholder="Tìm Kiếm Sản Phẩm" style={{ width: '100%', height: '100%', padding: '0.375rem 0.75rem' }} {...props} />
+                </div>
+            </div>
+            <div id="icon-search">
+                <i style={{ padding: '15px 25px', color: 'white' }} className="fa fa-search"></i>
+            </div>
+
+        </>
+    )
+}
 // Exporting the components individually
-export { InputEmail, InputPassword, InputConfirmPassword, InputName, InputPhone};
+export { InputEmail, InputPassword, InputConfirmPassword, InputName, InputPhone, InputSearch };

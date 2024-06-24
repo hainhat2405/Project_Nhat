@@ -5,7 +5,9 @@ const { authMiddleWare, authUserMiddleWare } = require("../middleware/authMiddle
 router.post('/create', OrderController.createOrder)
 router.get('/get-order-details/:id', OrderController.getOrderDetails)
 router.get('/get-all-order/:id', OrderController.getAllOrderDetails)
-router.delete('/cancel-order/:id',authUserMiddleWare, OrderController.cancelOrderDetails)
+router.delete('/cancel-order/:id', OrderController.cancelOrderDetails)
 router.get('/get-details-order/:id', OrderController.getDetailOrder)
 router.get('/get-all-order', OrderController.getAllOrder)
+router.put('/confirm-order/:id', OrderController.confirmOrder);
+
 module.exports = router

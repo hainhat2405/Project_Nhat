@@ -12,6 +12,7 @@ import { updateUser } from '../redux/slides/useSlide';
 import HeaderComponent from './HeaderComponents/HeaderComponent';
 import MenuComponent from './MenuComponent';
 import FooterComponent from './FooterComponent';
+import "../assets/css/list/Login.css"
 
 const LoginComponents = () => {
   const navigate = useNavigate();

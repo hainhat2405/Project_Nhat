@@ -4,7 +4,8 @@ import HeaderComponent from "./HeaderComponents/HeaderComponent";
 import MenuComponent from "./MenuComponent";
 import FooterComponent from "./FooterComponent";
 import { converPrice } from "../utils";
-import "../assets/css/list/DanhMuc.css"
+// import "../assets/css/list/DanhMuc.css"
+import "../assets/css/list/Card.css"
 
 const CardComponent = (props) => {
     const { countInStock, description, image, name, price, rating, type, discount, selled, id } = props
@@ -48,8 +49,8 @@ const CardComponent = (props) => {
                 <img src={`/img/${image}`} alt={name} />
             </div>
             <h4 style={{ textAlign: 'center', paddingTop: '25px', fontSize: '16px' }}>{name}</h4>
-            <h4 style={{color: 'rgb(219, 66, 112)',paddingTop: '25px', fontSize: '16px' }}>{rating} <i class="fa-solid fa-star" style={{color: 'rgb(253, 210, 45)', fontSize: '12px'}}></i> | Đã Bán {selled || 1000} </h4>
-            <h4 style={{ textAlign: 'center',paddingTop: '25px', color: 'rgb(219, 66, 112)', fontSize: '18px' }}>{converPrice(price)} &ensp;-{discount}% </h4> 
+            <h4 style={{color: 'rgb(219, 66, 112)',paddingTop: '25px', fontSize: '16px' }}>{rating} <i class="fa-solid fa-star" style={{color: 'rgb(253, 210, 45)', fontSize: '12px'}}></i> | Đã Bán {selled || 0} </h4>
+            <h4 style={{ textAlign: 'center',paddingTop: '25px', color: 'rgb(219, 66, 112)', fontSize: '18px' }}>{converPrice(price)} </h4> 
         </a>
     </div>
     );

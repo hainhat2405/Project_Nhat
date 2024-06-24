@@ -15,6 +15,7 @@ import { isPending } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import * as Message from '../../components/Message/Message';
 import { updateUser } from '../../redux/slides/useSlide';
+import "../../assets/css/list/GioHang.css"
 
 const OrderPage = () => {
     const [listChecked, setListChecked] = useState([]);
@@ -113,13 +114,19 @@ const OrderPage = () => {
         return 0
     }, [order])
     const diliveryPriceMemo = useMemo(() => {
-        if (priceMemo > 100000) {
-            return 10000
+        if (priceMemo >= 1 && priceMemo <= 25000) {
+            return 5000;
+        } else if (priceMemo > 25000 && priceMemo <= 150000) {
+            return 10000;
+        } else if (priceMemo > 150000 && priceMemo <= 300000) {
+            return 15000;
+        } else if (priceMemo > 300000) {
+            return 20000;
+        } else {
+            return 0; // Trường hợp `priceMemo` không hợp lệ hoặc bằng 0
         }
-        else {
-            return 0
-        }
-    }, [priceMemo])
+    }, [priceMemo]);
+    
 
     const totalPriceMemo = useMemo(() => {
         return Number(priceMemo) - Number(priceDiscountMemo) + Number(diliveryPriceMemo)
@@ -329,7 +336,7 @@ const OrderPage = () => {
             <div id="container1" >
                 <div id="info-gioHang">
                     <div className="ttmuahang">
-                        <i className="fa-brands fa-bitcoin" style={{ color: "white", background: "rgb(252, 155, 51)", padding: "5px", }}></i>
+                        <i className="fa-brands fa-bitcoin" style={{ color: "white", background: "rgb(252, 155, 51)", padding: "8px",fontSize:"20px", }}></i>
                         <a href="" onClick={handleHome} style={{ color: "white" }}>Tiếp tục mua hàng</a>
                     </div>
                     <h1>Giỏ hàng</h1>
@@ -435,7 +442,7 @@ const OrderPage = () => {
                             </div>
                         </div>
                         <div className="inp-tt">
-                            <i className="fa-brands fa-bitcoin" style={{ color: "white", background: "rgb(252, 155, 51)", padding: "12px", float: "left", width: "6%", height: "40px" }}></i>
+                            <i className="fa-brands fa-bitcoin" style={{ color: "white", background: "rgb(252, 155, 51)", padding: "12px 0 0 16px",fontSize: '20px', float: "left", width: "6%", height: "40px" }}></i>
                             <form action="" method="post">
                                 {/* <input type="submit" value="Thanh toán"
                                                 /> */}

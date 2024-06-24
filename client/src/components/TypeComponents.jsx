@@ -13,7 +13,7 @@ const TypeComponent = () => {
     const [products, setProducts] = useState([])
     const [panigate, setPanigate] = useState({
         page: 0,
-        limit: 10,
+        limit: 5,
         total: 1,
     })
     const fetchProductType = async (type, page, limit) => {
@@ -35,6 +35,7 @@ const TypeComponent = () => {
         console.log({current,pageSize})
         setPanigate({...panigate, page: current - 1, limit: pageSize})
     }
+    const productType = products.length > 0 ? products[0].type : '';
     return (
 
         <>
@@ -42,8 +43,11 @@ const TypeComponent = () => {
             <MenuComponent />
             <div id="content">
                 <div className="product">
+                    <h1>{productType}</h1>
                     {products?.map((products) => {
                         return (
+                           <>
+                            
                             <CardComponent
                                 key={products._id}
                                 countInStock={products.countInStock}
@@ -57,6 +61,7 @@ const TypeComponent = () => {
                                 discount={products.discount}
                                 id={products._id}
                             />
+                           </>
                         )
                     })}
                 </div>

@@ -12,7 +12,7 @@ import { getBase64 } from '../../utils';
 import HeaderComponent from '../../components/HeaderComponents/HeaderComponent';
 import MenuComponent from '../../components/MenuComponent';
 import FooterComponent from '../../components/FooterComponent';
-
+import "../../assets/css/list/thongTin.css"
 const ProfilePage = () => {
     const user = useSelector((state) => state.user)
     const [email, setEmail] = useState('')

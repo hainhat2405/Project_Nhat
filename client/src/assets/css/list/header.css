@@ -10,6 +10,7 @@
     display: inline-block;
     float: left;
     margin-left: 10px;
+    text-align: center;
 }
 .logo{
     width: 50%;
@@ -28,11 +29,13 @@
     float: left;
     list-style: none;
     margin-top: 40px;
+    margin-left: 70px;
 }
 
 .main-nav li{
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 .main-nav li a{
     text-decoration: none;
@@ -52,6 +55,13 @@
     float: right;
     padding-top: 15px;
     padding-right: 30px;
+
+}
+.ul-menu h3{
+    font-size: 24px;
+    float: right;
+    padding-top: 35px;
+    padding-right: 140px;
 
 }
 .ul-menu{

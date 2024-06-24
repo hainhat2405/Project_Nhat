@@ -221,11 +221,50 @@ const getAllOrder = () => {
         }
     })
 }
+
+const confirmOrder = (id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // Tìm và cập nhật đơn hàng
+            const order = await Order.findById(id);
+            if (!order) {
+                return resolve({
+                    status: 'ERR',
+                    message: 'The order is not defined'
+                });
+            }
+
+            // Cập nhật isDelivered thành true
+            order.isDelivered = true;
+            await order.save();
+
+            // Giả sử không cần phải điều chỉnh số lượng sản phẩm
+            // Nếu cần thay đổi, bạn sẽ thêm code cập nhật số lượng sản phẩm ở đây
+
+            resolve({
+                status: 'OK',
+                message: 'success',
+                data: order
+            });
+        } catch (e) {
+            console.error('Error:', e);
+            reject({
+                status: 'ERR',
+                message: 'Failed to cancel order details',
+                error: e.message
+            });
+        }
+    });
+};
+
+
+
 module.exports = {
     createOrder,
     getOrderDetails,
     getAllOrderDetails,
     cancelOrderDetails,
     getDetailOrder,
-    getAllOrder
+    getAllOrder,
+    confirmOrder
 };

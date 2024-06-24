@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as ProductService from '../services/ProductService';
-
+import { Avatar, Badge, Input } from "antd";
+import { InputSearch } from "./InputForm";
+import { searchProduct } from "../redux/slides/productSlide";
+import { useDispatch, useSelector } from 'react-redux'
+import "../assets/css/list/menu.css"
 const MenuComponent = () => {
+    const [search, setSearch] = useState('')
+    const dispatch = useDispatch();
     const [typeProduct, setTypeProduct] = useState([])
     const navigate = useNavigate();
     const handleDetailsProduct = (id) => {
         navigate(`/order`)
     }
+    const order = useSelector((state) => state.order)
     const fetchAllTypeProduct = async () => {
         const res = await ProductService.getAllTypeProduct()
         if(res?.status === 'OK'){
@@ -39,7 +46,10 @@ const MenuComponent = () => {
         // Navigate to the cleaned URL
         navigate(`/product/${cleanedType}`,{state: type});
     };
-    
+    const onSearch = (e) => {
+        setSearch(e.target.value)
+        dispatch(searchProduct(e.target.value))
+    }
     return (
         <div id="menu">
             <div id="menu-dmsp">
@@ -59,16 +69,12 @@ const MenuComponent = () => {
                 </nav>
 
             </div>
-            <div id="search">
-                <div id="search-1">
-                    <input type="search" name="src" id="src" style={{ width: '100%', height: '100%', padding: '0.375rem 0.75rem' }} placeholder="Tìm Kiếm Sản Phẩm" />
-                </div>
-            </div>
-            <div id="icon-search">
-                <i style={{ padding: '15px 25px', color: 'white' }} className="fa fa-search"></i>
-            </div>
+            <InputSearch onChange={onSearch}/>
             <div id="giohang">
-                <a href="" onClick={handleDetailsProduct}><i className="fa fa-shopping-cart" style={{ fontSize: '14px' }}></i>Giỏ hàng</a>
+                <Badge count={order?.orderItems?.length}>
+                    <a href="" onClick={handleDetailsProduct}><i className="fa fa-shopping-cart" style={{ fontSize: '14px' }}></i>Giỏ hàng</a>
+                </Badge>
+                
             </div>
         </div>
     );

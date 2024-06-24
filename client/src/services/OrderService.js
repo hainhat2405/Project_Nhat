@@ -50,3 +50,23 @@ export const cancelOrder = async (id, accessToken, orderItems, userId) => {
     return res.data
 }
 
+export const ConfirmOrder = async(id, accessToken) => {
+    const res = await axios.put(`${process.env.REACT_APP_API_URL}/order/confirm-order/${id}`, {
+        headers: {
+            token: `Bearer ${accessToken}`,
+        }
+    })
+    return res.data 
+} 
+
+export const updateOrderStatus = async (id, accessToken) => {
+    return axios.put(
+        `${process.env.REACT_APP_API_URL}/order/confirm-order/${id}`,
+        {},
+        {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        }
+    );
+};

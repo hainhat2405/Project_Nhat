@@ -469,6 +469,7 @@ const AdminProduct = () => {
       image: stateProduct.image,
       type: stateProduct.type === 'add_type' ? stateProduct.newType : stateProduct.type,
       countInStock: stateProduct.countInStock,
+      discount: stateProduct.discount,
     }
     mutation.mutate(params, {
       onSettled: () => {
@@ -635,7 +636,7 @@ const AdminProduct = () => {
               name="discount"
               rules={[{ required: false, message: 'Please input your discount!' }]}
             >
-              <Input style={{ width: '350px' }} name='price' value={stateProduct.discount} onChange={handleOnchange} />
+              <Input style={{ width: '350px' }} name='discount' value={stateProduct.discount} onChange={handleOnchange} />
             </Form.Item>
             <Form.Item
               label="Description"

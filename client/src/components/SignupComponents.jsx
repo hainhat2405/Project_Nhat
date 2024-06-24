@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom'
 import HeaderComponent from './HeaderComponents/HeaderComponent';
 import MenuComponent from './MenuComponent';
 import FooterComponent from './FooterComponent';
-
+import "../assets/css/list/DangKy.css"
 const { Option } = Select;
 
 const SignupComponents  = () => {

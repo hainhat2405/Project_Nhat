@@ -10,7 +10,7 @@
 
 #menu-dmsp{
     width: 275px;
-    height:90%;
+    height: 100%;
     margin-left: 10%;
     background-color: rgb(96, 177, 38);
     border-radius: 8px 8px 0px 0px;
@@ -99,7 +99,7 @@
     color: black;
     font-size: 16px;
     position: absolute;
-    top: 50px; /* Điều chỉnh vị trí theo yêu cầu */
+    top: 150px; /* Điều chỉnh vị trí theo yêu cầu */
     left: 150;
     z-index: 10;
 }
